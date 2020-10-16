@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
 EditText txt_correo, txt_pass;
 Button btn_iniciar;
 private FirebaseAuth mAuth;
+
 private FirebaseAuth.AuthStateListener authStateListener;
 private DatabaseReference mDatabase;
 private String Tipo;
