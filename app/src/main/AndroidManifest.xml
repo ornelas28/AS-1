@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.as">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/icon"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".pendientes_admin" />
+        <activity android:name=".sar_admin" />
+        <activity android:name=".ris_admin" />
+        <activity android:name=".estadisticas_admin" />
+        <activity android:name=".envio_ris" />
+        <activity android:name=".email" />
+        <activity android:name=".envio_sar" />
+        <activity android:name=".faqs" />
+        <activity android:name=".sar" />
+        <activity android:name=".ris" />
+        <activity android:name=".mi_cuenta" />
+        <activity android:name=".menu_administrador" />
+        <activity android:name=".menu_users" />
+        <activity android:name=".Splash_screen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Registro"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+        <activity android:name=".MainActivity" />
+    </application>
+
+</manifest>

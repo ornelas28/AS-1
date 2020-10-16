@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context=".ris">
+
+
+
+    <ScrollView
+        android:layout_width="374dp"
+        android:layout_height="447dp"
+        android:layout_gravity="center"
+        >
+        <LinearLayout
+            android:gravity="center"
+
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="false">
+
+
+
+<!-- descripción --> <com.google.android.material.textfield.TextInputLayout
+
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                app:counterEnabled="true"
+                app:counterMaxLength="2000"
+                app:errorEnabled="true">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_desc_ris"
+                    android:layout_width="300dp"
+                    android:hint="Descripción de los hechos"
+                    android:inputType="textMultiLine"
+                    android:lines="12"
+                    android:gravity="top"
+                    android:layout_height="wrap_content">
+
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+
+
+                app:errorEnabled="true">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_nasociados_afect"
+                    android:layout_width="300dp"
+                    android:hint="Descripción y causa del incidente"
+                    android:inputType="textMultiLine"
+                    android:lines="12"
+                    android:gravity="top"
+                    android:layout_height="wrap_content">
+
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+
+
+                app:errorEnabled="true">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_trat_persafect"
+                    android:layout_width="300dp"
+                    android:hint="Tx médico y estado de salud"
+                    android:inputType="textMultiLine"
+                    android:gravity="top"
+                    android:lines="12"
+                    android:layout_height="wrap_content">
+
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+
+
+                app:errorEnabled="true">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_detalles_bienesdañados"
+                    android:layout_width="300dp"
+                    android:hint="Detalles de los bienes CRM dañados"
+                    android:inputType="textMultiLine"
+                    android:lines="12"
+                    android:gravity="top"
+                    android:layout_height="wrap_content">
+
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+
+
+                app:errorEnabled="true">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_daños_terceros"
+                    android:layout_width="300dp"
+                    android:hint="Des. Daños o lesiones a terceros"
+                    android:inputType="textMultiLine"
+                    android:lines="12"
+                    android:gravity="top"
+                    android:layout_height="wrap_content">
+
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+
+
+                app:errorEnabled="true">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_tx_terceros"
+                    android:layout_width="300dp"
+                    android:hint="Tx médico y estado de salud actual"
+                    android:inputType="textMultiLine"
+                    android:lines="12"
+                    android:gravity="top"
+                    android:layout_height="wrap_content">
+
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+
+<!-- observaciones--><com.google.android.material.textfield.TextInputLayout
+                app:errorTextAppearance="@android:color/holo_red_dark"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                app:counterEnabled="true"
+                app:counterMaxLength="200"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_observaciones_Sar"
+                    android:layout_width="300dp"
+                    android:hint="Observaciones"
+                    android:inputType="textMultiLine"
+                    android:lines="9"
+                    android:gravity="top"
+                    android:textAllCaps="true"
+                    android:layout_height="wrap_content">
+
+                </com.google.android.material.textfield.TextInputEditText>
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+
+                android:orientation="vertical"
+                >
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:text="Policía Federal"
+                    android:layout_marginTop="10dp"
+                    android:textSize="15dp">
+
+                </androidx.appcompat.widget.AppCompatCheckBox>
+
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:text="Policía Estatal"
+                    android:layout_marginTop="10dp"
+                    android:textSize="15dp">
+
+                </androidx.appcompat.widget.AppCompatCheckBox>
+
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:text="Policía Municipal"
+                    android:layout_marginTop="10dp"
+                    android:textSize="15dp">
+
+                </androidx.appcompat.widget.AppCompatCheckBox>
+
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:text="Ejército Mexicano"
+                    android:layout_marginTop="10dp"
+                    android:textSize="15dp">
+
+                </androidx.appcompat.widget.AppCompatCheckBox>
+
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:text="Marina Armada de México"
+                    android:layout_marginTop="10dp"
+                    android:textSize="15dp">
+
+                </androidx.appcompat.widget.AppCompatCheckBox>
+
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:text="Guardia Nacional"
+                    android:layout_marginTop="10dp"
+                    android:textSize="15dp">
+
+                </androidx.appcompat.widget.AppCompatCheckBox>
+
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:text="Actores de la violencia"
+                    android:textSize="15dp">
+
+                </androidx.appcompat.widget.AppCompatCheckBox>
+
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:text="Manifestante"
+                    android:layout_marginTop="10dp"
+                    android:textSize="15dp">
+
+                </androidx.appcompat.widget.AppCompatCheckBox>
+
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:text="Comunidades/ miembros de la comunidad"
+                    android:layout_marginTop="10dp"
+                    android:textSize="15dp">
+
+                </androidx.appcompat.widget.AppCompatCheckBox>
+
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:text="Delincuencia común"
+                    android:layout_marginTop="10dp"
+                    android:textSize="15dp">
+
+                </androidx.appcompat.widget.AppCompatCheckBox>
+
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:text="Otros"
+                    android:layout_marginTop="10dp"
+                    android:textSize="15dp">
+
+                </androidx.appcompat.widget.AppCompatCheckBox>
+
+
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/btn_atras"
+                    android:layout_width="140dp"
+                    android:layout_height="63dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/button4"
+
+                    android:text="Atras"
+
+                    android:textSize="15dp"
+                    tools:ignore="OnClick" />
+
+                <Button
+                    android:id="@+id/btn_finalizar"
+                    android:layout_width="140dp"
+                    android:layout_height="63dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/button3"
+                    android:text="Finalizar" />
+            </LinearLayout>
+
+            <!--</com.google.android.material.textfield.TextInputLayout>-->
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>

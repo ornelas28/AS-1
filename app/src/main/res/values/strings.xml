@@ -1,0 +1,139 @@
+<resources>
+    <string name="app_name">Plataforma AMS</string>
+    <string name="item1">Olvide la contraseña</string>
+    <string name="item2">Algo más</string>
+    <string name="Firma">\nEnviado desde A+S App</string>
+    <string name="titulo">Registro</string>
+
+
+    <string-array name="delegaciones">
+        <item>Delegación</item>
+        <item>Ameca</item>
+        <item>Atotonilco</item>
+        <item>Autlán</item>
+        <item>Capilla de Guadalupe</item>
+        <item>Cd. Guzmán</item>
+        <item>Chapala</item>
+        <item>Cihuatlán</item>
+        <item>El Grullo</item>
+        <item>Estatal</item>
+        <item>Encarnación de Díaz</item>
+        <item>Guadalajara</item>
+        <item>Jalostotitlán</item>
+        <item>Jesús María</item>
+        <item>Lagos de Moreno</item>
+        <item>Ocotlán</item>
+        <item>Pegueros</item>
+        <item>Puerto Vallarta</item>
+        <item>San José de Gracia</item>
+        <item>San Juan de los Lagos</item>
+        <item>Sayula</item>
+        <item>Teocaltiche</item>
+        <item>Tepatitlán</item>
+        <item>Tequila</item>
+        <item>Tomatlán</item>
+        <item>Valle de Guadalupe</item>
+        <item>Villa Hidalgo</item>
+        <item>Yahualica</item>
+        <item>Zapotlanejo</item>
+        <item>Estatal</item>
+    </string-array>
+
+    <string-array name="tipos">
+        <item>Tipo de servicio</item>
+        <item>Choque</item>
+        <item>Baleado</item>
+        <item>Atropellado</item>
+        <item>Infarto</item>
+    </string-array>
+
+    <string-array name="Solicitud">
+        <item>Servicio Solicitado Por:</item>
+        <item>C-5 - 911</item>
+        <item>Ejercito</item>
+        <item>Marina</item>
+        <item>Guardia Nal.</item>
+        <item>Particular</item>
+        <item>Policia</item>
+        <item>Protección Civil</item>
+    </string-array>
+
+    <string-array name="Autoridadpub">
+        <item>Autoridad publica presente</item>
+        <item>C-5 - 911</item>
+        <item>Ejercito</item>
+        <item>Marina</item>
+        <item>Guardia Nal.</item>
+        <item>Particular</item>
+        <item>Policia</item>
+        <item>Protección Civil</item>
+    </string-array>
+
+    <string-array name="tipo_paciente">
+        <item>Tipo de Paciente</item>
+        <item>Tipo 1</item>
+        <item>Tipo 2</item>
+        <item>Tipo 3</item>
+    </string-array>
+
+    <string-array name="Hospital_Traslado">
+        <item>Hospital de Traslado</item>
+        <item>CMNO IMSS</item>
+        <item>HR Dr. V. Gomez F ISSSTE</item>
+        <item>HGR 46 IMSS</item>
+        <item>HGR 45 IMSS</item>
+        <item>HGR 180 IMSS</item>
+        <item>HGR 110 IMSS</item>
+        <item>HGZ 89 IMSS</item>
+        <item>HGZ 14 IMSS</item>
+        <item> UMF 93 IMSS</item>
+        <item>Otro</item>
+    </string-array>
+
+    <string-array name="autoridades_crm">
+
+        <item>Autoridad CRM informadas</item>
+        <item>Presidente</item>
+        <item>Administrador</item>
+        <item>Coord. Local de Socorros</item>
+        <item>Jefe de Guardia</item>
+        <item>Coord. Estatal de Socorros</item>
+        <item>Punto Focal AMS</item>
+
+
+    </string-array>
+
+    <string-array name="num_y_del">
+        <item>Delegación</item>
+        <item>14001 Ameca</item>
+        <item>14003 Atotonilco</item>
+        <item>14004 Autlán</item>
+        <item>14006 Capilla de Gpe.</item>
+        <item>14007 Chapala</item>
+        <item>14008 Ciuda Guzmán</item>
+        <item>14010 El grullo</item>
+        <item>14011 Encarnación de Díaz</item>
+        <item>14013 Guadalajara</item>
+        <item>14014 Jalostotitlan</item>
+        <item>14015 Jesús María</item>
+        <item>14017 Lagos de Moreno</item>
+        <item>14019 Ocotlán</item>
+        <item>14020 Pegueros</item>
+        <item>14023 Puerto Vallarta</item>
+        <item>14037 San Ignacio C. G</item>
+        <item>14036 San José de G.</item>
+        <item>14024 San Juan de los L.</item>
+        <item>14025 Sayula</item>
+        <item>14028 Tepatitlán</item>
+        <item>14029 Tequila</item>
+        <item>14030 Tomatlán</item>
+        <item>14032 Valle de Gpe.</item>
+        <item>14035 Villa Hgo.</item>
+        <item>14033 Yahualica</item>
+        <item>14034 Zapotlanejo</item>
+        <item>##### Teocaltiche</item>
+        <item>14000 Estatal</item>
+
+
+    </string-array>
+</resources>

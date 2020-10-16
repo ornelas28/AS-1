@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_height="match_parent"
+android:layout_width="match_parent"
+android:orientation="vertical"
+android:padding="15dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="false"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_entidad_ris_inflate"
+            android:layout_width="match_parent"
+            android:layout_marginTop="15dp"
+            android:hint="Entidad"
+            android:focusable="false"
+            android:ems="10"
+            android:layout_height="wrap_content">
+
+        </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:id="@+id/Numero_delgacion_ris_inflate"
+        android:gravity="center"
+        >
+
+    </androidx.appcompat.widget.AppCompatSpinner>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_n_involucadros_ris_inflate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:hint="Numero de Involucadrados"
+            android:ems="10">
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_n_asociados_ris_inflate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:hint="Numero de asociados"
+            android:ems="10">
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_fecha_ris_inflate"
+            android:focusable="false"
+            android:hint="Fecha"
+            >
+
+        </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- primera linea de checkboxes -->
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+        >
+
+
+
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:text="Accidente de Tránsito"
+                android:textSize="15dp">
+
+            </androidx.appcompat.widget.AppCompatCheckBox>
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:text="Asalto/Robo"
+                android:layout_marginTop="10dp"
+                android:textSize="15dp">
+
+            </androidx.appcompat.widget.AppCompatCheckBox>
+
+        <!-- segunda linea checkboxes-->
+
+
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Violencia/Ofensa Sexual"
+                android:textSize="15dp">
+
+            </androidx.appcompat.widget.AppCompatCheckBox>
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="107dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Balacera"
+                android:textSize="15dp">
+
+            </androidx.appcompat.widget.AppCompatCheckBox>
+
+
+        <!-- Tercera linea checkboxes -->
+
+
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Secuestro"
+                android:textSize="15dp">
+
+            </androidx.appcompat.widget.AppCompatCheckBox>
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="107dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Extorsión"
+                android:textSize="15dp">
+
+            </androidx.appcompat.widget.AppCompatCheckBox>
+
+
+        <!-- Cuarta linea checkboxes -->
+
+
+
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:text="Amenaza"
+                android:layout_marginTop="10dp"
+                android:textSize="15dp">
+
+            </androidx.appcompat.widget.AppCompatCheckBox>
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="148dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Abuso de Emblema"
+                android:textSize="15dp">
+
+            </androidx.appcompat.widget.AppCompatCheckBox>
+
+
+
+
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:text="Arrestos / Detonaciones"
+                android:layout_marginTop="10dp"
+                android:textSize="15dp">
+
+            </androidx.appcompat.widget.AppCompatCheckBox>
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="134dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Agresión al personal"
+                android:textSize="15dp">
+
+            </androidx.appcompat.widget.AppCompatCheckBox>
+
+
+
+
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Impedir Acceso, impedir realización acción"
+                android:textSize="15dp">
+
+            </androidx.appcompat.widget.AppCompatCheckBox>
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="10dp"
+            >
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Agreción a instalaciones y/o vehiculos"
+                android:textSize="15dp">
+
+            </androidx.appcompat.widget.AppCompatCheckBox>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_hora_ris_inflate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:hint="Hora">
+
+                </com.google.android.material.textfield.TextInputEditText>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="10dp"
+            >
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Agresion al personal de Cruz Roja Mexicana"
+                android:textSize="15dp">
+
+            </androidx.appcompat.widget.AppCompatCheckBox>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="10dp"
+            >
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Agresion a personas transportadas/evacuadas"
+                android:textSize="15dp">
+
+            </androidx.appcompat.widget.AppCompatCheckBox>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            >
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_atras"
+                android:text="Atras"
+                />
+
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_enviar"
+
+                android:text="Enviar"
+                />
+
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+<!--linear del scroll-->
+</LinearLayout>
+
+    </ScrollView>
+</LinearLayout>
+
