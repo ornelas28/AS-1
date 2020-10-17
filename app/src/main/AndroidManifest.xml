@@ -12,16 +12,16 @@
         <activity android:name=".pendientes_admin" />
         <activity android:name=".sar_admin" />
         <activity android:name=".ris_admin" />
-        <activity android:name=".estadisticas_admin" />
-        <activity android:name=".envio_ris" />
-        <activity android:name=".email" />
-        <activity android:name=".envio_sar" />
-        <activity android:name=".faqs" />
+        <activity android:name=".AdminAnalyticsActivity" />
+        <activity android:name=".SendRisActivity" />
+        <activity android:name=".SendEmailActivity" />
+        <activity android:name=".SendSarActivity" />
+        <activity android:name=".FaqsActivity" />
         <activity android:name=".sar" />
         <activity android:name=".ris" />
         <activity android:name=".mi_cuenta" />
-        <activity android:name=".menu_administrador" />
-        <activity android:name=".menu_users" />
+        <activity android:name=".AdminMainActivity" />
+        <activity android:name=".UserMainActivity" />
         <activity android:name=".Splash_screen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

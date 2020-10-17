@@ -23,7 +23,7 @@ public class mi_cuenta extends AppCompatActivity {
         btn_atras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent atras = new Intent(mi_cuenta.this,menu_users.class);
+                Intent atras = new Intent(mi_cuenta.this, UserMainActivity.class);
                 startActivity(atras);
                 finish();
             }

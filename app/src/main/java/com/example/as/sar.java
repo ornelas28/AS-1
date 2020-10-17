@@ -3,15 +3,12 @@ package com.example.as;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.opengl.Visibility;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class sar extends AppCompatActivity {
@@ -50,7 +47,7 @@ public class sar extends AppCompatActivity {
 
                     Toast.makeText(sar.this, "Reporte finalizado con exito", Toast.LENGTH_SHORT).show();
                     Toast.makeText(sar.this, "Se ha notificado", Toast.LENGTH_SHORT).show();
-                    Intent finalizar = new Intent(sar.this, menu_users.class);
+                    Intent finalizar = new Intent(sar.this, UserMainActivity.class);
                     startActivity(finalizar);
                     finish();
                 }else{
@@ -105,7 +102,7 @@ public class sar extends AppCompatActivity {
     }
 
     public void onatras(View view){
-        Intent next =  new Intent(this, menu_users.class);
+        Intent next =  new Intent(this, UserMainActivity.class);
         startActivity(next);
         finish();
 

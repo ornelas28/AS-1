@@ -6,7 +6,7 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     android:layout_marginTop="5dp"
-    tools:context=".email">
+    tools:context=".SendEmailActivity">
 
     <TextView
         android:id="@+id/lbl_registro"
@@ -104,7 +104,7 @@
                     android:id="@+id/enviar"
                     android:layout_width="140dp"
                     android:layout_height="63dp"
-                    android:onClick="onEnviar"
+                    android:onClick="onSend"
                     android:background="@drawable/button3"
                     android:text="Enviar" />
             </LinearLayout>

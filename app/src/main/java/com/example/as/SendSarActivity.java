@@ -8,16 +8,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
-public class envio_sar extends AppCompatActivity {
-Button btn_cancelar;
+public class SendSarActivity extends AppCompatActivity {
+
+    private Button buttonCancel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_envio_sar);
-
-
-
     }
-
 
 }

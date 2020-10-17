@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.EventLog;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,14 +12,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
+import com.example.as.classes.UserData;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -77,8 +71,8 @@ private String Tipo;
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot2) {
                             try {
-                                Datos_registro tipo = dataSnapshot.getValue(Datos_registro.class);
-                                String ttipo = tipo.getTipo();
+                                UserData tipo = dataSnapshot.getValue(UserData.class);
+                                String ttipo = tipo.getType();
                                 Tipo = ttipo;
                                 Toast.makeText(MainActivity.this, "Tipo: " + ttipo, Toast.LENGTH_SHORT).show();
                             } catch (Exception e) {
@@ -102,33 +96,25 @@ private String Tipo;
             }
         });
 
-        mAuth.signInWithEmailAndPassword(email, passw).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    if (Tipo.equals("Usuarios")) {
-                        Toast.makeText(MainActivity.this, "!Bienvenido:\n " + email + "!", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(MainActivity.this, menu_users.class));
-                    } else if (Tipo.equals("Administrador")) {
-                        Toast.makeText(MainActivity.this, "!Bienvenido:\n " + email + "!", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(MainActivity.this, menu_administrador.class));
-                    }
-
-
-                } else {
-
+        mAuth.signInWithEmailAndPassword(email, passw).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                if (Tipo.equals("Usuarios")) {
+                    Toast.makeText(MainActivity.this, "!Bienvenido:\n " + email + "!", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this, UserMainActivity.class));
+                } else if (Tipo.equals("Administrador")) {
+                    Toast.makeText(MainActivity.this, "!Bienvenido:\n " + email + "!", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this, AdminMainActivity.class));
                 }
+            } else {
+
             }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                if (e instanceof FirebaseAuthInvalidCredentialsException) {
-                    Toast.makeText(MainActivity.this, "Contraseña Invalida, verifica e intenta de nuevo", Toast.LENGTH_LONG).show();
-                } else if (e instanceof FirebaseAuthInvalidUserException) {
-                    Toast.makeText(MainActivity.this, "Error, el usuario no existe en nuestros registros", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(MainActivity.this, " " + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                }
+        }).addOnFailureListener(e -> {
+            if (e instanceof FirebaseAuthInvalidCredentialsException) {
+                Toast.makeText(MainActivity.this, "Contraseña Invalida, verifica e intenta de nuevo", Toast.LENGTH_LONG).show();
+            } else if (e instanceof FirebaseAuthInvalidUserException) {
+                Toast.makeText(MainActivity.this, "Error, el usuario no existe en nuestros registros", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(MainActivity.this, " " + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

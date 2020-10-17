@@ -5,9 +5,8 @@ import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
-public class menu_administrador extends AppCompatActivity {
+public class AdminMainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,13 +14,10 @@ public class menu_administrador extends AppCompatActivity {
         setContentView(R.layout.activity_menu_administrado);
 
         CardView crd_micuenta=findViewById(R.id.crd_micuenta_admin);
-        crd_micuenta.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent (menu_administrador.this, mi_cuenta.class);
-                startActivity(intent);
-                finish();
-            }
+        crd_micuenta.setOnClickListener(view -> {
+            Intent intent = new Intent (AdminMainActivity.this, mi_cuenta.class);
+            startActivity(intent);
+            finish();
         });
     }
 }
