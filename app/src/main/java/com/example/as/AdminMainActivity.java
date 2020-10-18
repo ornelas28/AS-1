@@ -13,10 +13,9 @@ public class AdminMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_administrado);
 
-        CardView crd_micuenta=findViewById(R.id.crd_micuenta_admin);
-        crd_micuenta.setOnClickListener(view -> {
-            Intent intent = new Intent (AdminMainActivity.this, mi_cuenta.class);
-            startActivity(intent);
+        CardView cardViewMyAccountAdmin = findViewById(R.id.crd_micuenta_admin);
+        cardViewMyAccountAdmin.setOnClickListener(view -> {
+            startActivity(AdminMainActivity.this, MyAccountActivity.class);
             finish();
         });
     }

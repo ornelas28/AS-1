@@ -9,19 +9,19 @@
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".pendientes_admin" />
-        <activity android:name=".sar_admin" />
-        <activity android:name=".ris_admin" />
+        <activity android:name=".AdminPendingAntivity" />
+        <activity android:name=".SarAdminActivity" />
+        <activity android:name=".AdminRisActivity" />
         <activity android:name=".AdminAnalyticsActivity" />
         <activity android:name=".SendRisActivity" />
         <activity android:name=".SendEmailActivity" />
         <activity android:name=".SendSarActivity" />
         <activity android:name=".FaqsActivity" />
-        <activity android:name=".sar" />
-        <activity android:name=".ris" />
-        <activity android:name=".mi_cuenta" />
+        <activity android:name=".SarActivity" />
+        <activity android:name=".RisActivity" />
+        <activity android:name=".MyAccountActivity" />
         <activity android:name=".AdminMainActivity" />
-        <activity android:name=".UserMainActivity" />
+        <activity android:name=".UserMainActivity_C" />
         <activity android:name=".Splash_screen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,9 +30,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Registro"
+            android:name=".LogUpActivity"
             android:windowSoftInputMode="stateVisible|adjustResize" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity_C" />
     </application>
 
 </manifest>

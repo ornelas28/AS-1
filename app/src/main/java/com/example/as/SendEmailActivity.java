@@ -33,35 +33,28 @@ public class SendEmailActivity extends AppCompatActivity {
         editTextTo.setText("fmadrigal.jal@cruzrojamexicana.org.mx");
 
         atras.setOnClickListener(view -> {
-            Intent intent = new Intent(SendEmailActivity.this, UserMainActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(SendEmailActivity.this,
+                    UserMainActivity_C.class));
             finish();
         });
 
     }
 
     public void onSend(View view){
-
         stringTo = editTextTo.getText().toString();
         stringMessage = editTextMessage.getText().toString();
         stringTop = editTextTop.getText().toString();
-
         sendEmail();
-
         Toast.makeText(this,"Enviando datos al correo",Toast.LENGTH_SHORT).show();
-
     }
 
     public void sendEmail(){
-
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
-
         emailIntent.setData(Uri.parse("mailto:"));
         emailIntent.setType("text/plain");
         emailIntent.putExtra(Intent.EXTRA_EMAIL, new String []{stringTo} );
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, stringTop);
         emailIntent.putExtra(Intent.EXTRA_TEXT, stringMessage + getString(R.string.Firma));
-
         try {
             startActivity(Intent.createChooser(emailIntent, "Enviar email."));
             Log.i("EMAIL", "Enviando email...");
@@ -70,8 +63,6 @@ public class SendEmailActivity extends AppCompatActivity {
             Toast.makeText(this, "NO existe ningún cliente de email instalado!.", Toast.LENGTH_SHORT).show();
         }
 
-
     }
-
 
 }

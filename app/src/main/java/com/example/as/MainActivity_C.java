@@ -22,7 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity_C extends AppCompatActivity {
 EditText txt_correo, txt_pass;
 Button btn_iniciar;
 private FirebaseAuth mAuth;
@@ -39,12 +39,7 @@ private String Tipo;
         txt_pass=findViewById(R.id.txt_password_login);
         btn_iniciar=findViewById(R.id.btn_iniciarsesion_login);
         mAuth=FirebaseAuth.getInstance();
-        btn_iniciar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                iniciar_Sesion();
-            }
-        });
+        btn_iniciar.setOnClickListener(v -> iniciar_Sesion());
         mDatabase= FirebaseDatabase.getInstance().getReference();
 
     }
@@ -74,7 +69,7 @@ private String Tipo;
                                 UserData tipo = dataSnapshot.getValue(UserData.class);
                                 String ttipo = tipo.getType();
                                 Tipo = ttipo;
-                                Toast.makeText(MainActivity.this, "Tipo: " + ttipo, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity_C.this, "Tipo: " + ttipo, Toast.LENGTH_SHORT).show();
                             } catch (Exception e) {
 
                             }
@@ -99,22 +94,22 @@ private String Tipo;
         mAuth.signInWithEmailAndPassword(email, passw).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 if (Tipo.equals("Usuarios")) {
-                    Toast.makeText(MainActivity.this, "!Bienvenido:\n " + email + "!", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(MainActivity.this, UserMainActivity.class));
+                    Toast.makeText(MainActivity_C.this, "!Bienvenido:\n " + email + "!", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity_C.this, UserMainActivity_C.class));
                 } else if (Tipo.equals("Administrador")) {
-                    Toast.makeText(MainActivity.this, "!Bienvenido:\n " + email + "!", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(MainActivity.this, AdminMainActivity.class));
+                    Toast.makeText(MainActivity_C.this, "!Bienvenido:\n " + email + "!", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity_C.this, AdminMainActivity.class));
                 }
             } else {
 
             }
         }).addOnFailureListener(e -> {
             if (e instanceof FirebaseAuthInvalidCredentialsException) {
-                Toast.makeText(MainActivity.this, "Contraseña Invalida, verifica e intenta de nuevo", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity_C.this, "Contraseña Invalida, verifica e intenta de nuevo", Toast.LENGTH_LONG).show();
             } else if (e instanceof FirebaseAuthInvalidUserException) {
-                Toast.makeText(MainActivity.this, "Error, el usuario no existe en nuestros registros", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity_C.this, "Error, el usuario no existe en nuestros registros", Toast.LENGTH_LONG).show();
             } else {
-                Toast.makeText(MainActivity.this, " " + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity_C.this, " " + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -142,7 +137,7 @@ private String Tipo;
     }
 //Intent para pasar al activity del registro (onClic del boton registrarme)
     public void registro(View view){
-        Intent next =  new Intent(this, Registro.class);
+        Intent next =  new Intent(this, LogUpActivity.class);
         startActivity(next);
 
     }

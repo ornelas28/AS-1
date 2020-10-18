@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class pendientes_admin extends AppCompatActivity {
+public class AdminRisActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pendientes_admin);
+        setContentView(R.layout.activity_ris_admin);
     }
 }

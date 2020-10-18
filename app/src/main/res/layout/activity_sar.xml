@@ -8,7 +8,7 @@
     android:orientation="vertical"
 
 
-    tools:context=".Registro">
+    tools:context=".LogUpActivity">
 
     <TextView
         android:id="@+id/lbl_uso"
@@ -274,7 +274,7 @@
                     android:layout_marginRight="10dp"
                     android:layout_gravity="center_horizontal"
                     android:background="@drawable/button4"
-                    android:onClick="onatras"
+                    android:onClick="onBack"
                     android:text="Atras"
 
                     android:textSize="15dp"
