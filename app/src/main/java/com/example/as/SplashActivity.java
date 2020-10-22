@@ -8,12 +8,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.VideoView;
 
-public class Splash_screen extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash_screen);
+        setContentView(R.layout.activity_splash);
 
         VideoView videoview = (VideoView) findViewById(R.id.videoView);
         Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.animation);
@@ -24,7 +24,7 @@ public class Splash_screen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(Splash_screen.this, MainActivity_C.class));
+                startActivity(new Intent(SplashActivity.this, LogInActivity_C.class));
                 finish();
             }
         },3000);

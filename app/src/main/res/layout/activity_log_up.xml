@@ -38,7 +38,7 @@
             app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txt_nombreReg"
+                android:id="@+id/textName"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -58,7 +58,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
 
-                android:id="@+id/txt_apellidoReg"
+                android:id="@+id/text_last_name"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -78,7 +78,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
 
-                        android:id="@+id/txt_correoReg"
+                        android:id="@+id/text_email"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
                         android:ems="10"
@@ -98,7 +98,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
 
-                android:id="@+id/txt_confcorreoReg"
+                android:id="@+id/text_confirm_email"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:hint="Confirmar Correo"
@@ -117,7 +117,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
 
-                android:id="@+id/txt_numasociadoReg"
+                android:id="@+id/text_associate_number"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:hint="Numero de asociado"
@@ -137,7 +137,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
 
-                android:id="@+id/txt_passReg"
+                android:id="@+id/text_password"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:hint="Contraseña"
@@ -157,7 +157,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
 
-                android:id="@+id/txt_confpassReg"
+                android:id="@+id/text_confirm_password"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
 
@@ -178,7 +178,7 @@
             app:errorEnabled="true">
 
             <androidx.appcompat.widget.AppCompatSpinner
-                android:id="@+id/delegacion_reg"
+                android:id="@+id/spinner_delegation"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 >
@@ -201,7 +201,7 @@
                     android:textSize="15sp" />
 
                 <Button
-                    android:id="@+id/btn_registrarme"
+                    android:id="@+id/button_logUp"
                     android:layout_width="140dp"
                     android:layout_height="63dp"
                     android:background="@drawable/button3"

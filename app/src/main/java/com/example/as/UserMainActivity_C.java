@@ -26,7 +26,7 @@ public class UserMainActivity_C extends AppCompatActivity implements View.OnClic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu_users);
+        setContentView(R.layout.activity_user_main);
 
         CardView cardViewSar = findViewById(R.id.crd_sar);
         CardView cardViewExit = findViewById(R.id.crd_exit);
@@ -52,7 +52,7 @@ public class UserMainActivity_C extends AppCompatActivity implements View.OnClic
         switch (view.getId()) {
             case R.id.crd_sar: {
 
-                View view1 = getLayoutInflater().inflate(R.layout.activity_envio_sar, null);
+                View view1 = getLayoutInflater().inflate(R.layout.activity_send_sar, null);
                 Button buttonSend = view1.findViewById(R.id.btn_ris_alert);
                 ArrayAdapter<String> stringArrayAdapter;
                 ArrayAdapter<String> adapter;

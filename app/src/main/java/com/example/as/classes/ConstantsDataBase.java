@@ -1,4 +1,4 @@
-package com.example.as;
+package com.example.as.classes;
 
 public class ConstantsDataBase {
     public static final String NAME = "Nombre:";

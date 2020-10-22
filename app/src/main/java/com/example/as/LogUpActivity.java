@@ -19,24 +19,30 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.example.as.ConstantsDataBase.*;
+import static com.example.as.classes.ConstantsDataBase.*;
 
 public class LogUpActivity extends AppCompatActivity {
 
-    private EditText textName, textLastName, textEmail, textConfirmEmail, associateNumer, textPassword, textConfirmPassword;
+    private EditText textNameReg;
+    private EditText textLastName;
+    private EditText textEmail;
+    private EditText textConfirmEmail;
+    private EditText textAssociateNumber;
+    private EditText textPassword;
+    private EditText textConfirmPassword;
     private Spinner spinnerDelegation;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registro);
+        setContentView(R.layout.activity_log_up);
+
         String [] opcionesdel;
         ArrayAdapter <String> adapter;
 
-        Spinner spinner = findViewById(R.id.delegacion_reg);
+        Spinner spinnerDelegation = findViewById(R.id.spinner_delegation);
 
         opcionesdel = new String[]{"Delegación:", "Ameca", "Atotonilco","Autlán",
                 "Capilla de Guadalupe","Cd. Guzman","Chapala","Cihutlán",
@@ -45,25 +51,25 @@ public class LogUpActivity extends AppCompatActivity {
                 "San Ignacio Cerro Gordo","San José de Gracia","San Juan de los Lagos",
                 "Sayula","Teocaltiche","Tepatitlán","Tequila","Tomatlán","Valle de Guadalupe",
                 "Villa Hidalgo","Yahualica","Zapotlanejo","Estatal"};
+
         adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_dropdown_item, opcionesdel);
-        spinner.setAdapter(adapter);
+        spinnerDelegation.setAdapter(adapter);
 
-        textName =findViewById(R.id.txt_nombreReg);
-        textLastName =findViewById(R.id.txt_apellidoReg);
-        textConfirmEmail =findViewById(R.id.txt_confcorreoReg);
-        associateNumer =findViewById(R.id.txt_numasociadoReg);
-        textConfirmPassword =findViewById(R.id.txt_confpassReg);
-        spinnerDelegation =findViewById(R.id.delegacion_reg);
-        textEmail = findViewById(R.id.txt_correoReg);
-        textPassword =findViewById(R.id.txt_passReg);
-        Button buttonLogUp = findViewById(R.id.btn_registrarme);
+        textNameReg =findViewById(R.id.textName);
+        textLastName =findViewById(R.id.text_last_name);
+        textConfirmEmail =findViewById(R.id.text_confirm_email);
+        textAssociateNumber =findViewById(R.id.text_associate_number);
+        textConfirmPassword =findViewById(R.id.text_confirm_password);
+        this.spinnerDelegation =findViewById(R.id.spinner_delegation);
+        textEmail = findViewById(R.id.text_email);
+        textPassword =findViewById(R.id.text_password);
+        Button buttonLogUp = findViewById(R.id.button_logUp);
 
         firebaseAuth =FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
         buttonLogUp.setOnClickListener(v -> CreateUSer());
-
 
     }
 
@@ -77,11 +83,11 @@ public class LogUpActivity extends AppCompatActivity {
         String confirmPassword;
         String delegation;
 
-        name = textName.getText().toString();
+        name = textNameReg.getText().toString();
         lastName = textLastName.getText().toString();
         email = textEmail.getText().toString();
         confirmEmail = textConfirmEmail.getText().toString();
-        associateNumber = this.associateNumer.getText().toString();
+        associateNumber = this.textAssociateNumber.getText().toString();
         password = textPassword.getText().toString();
         confirmPassword = textConfirmPassword.getText().toString();
         delegation = spinnerDelegation.getSelectedItem().toString();
@@ -115,7 +121,7 @@ public class LogUpActivity extends AppCompatActivity {
                             Toast.makeText(LogUpActivity.this, "" +
                                     "Usuario creado con exito", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(LogUpActivity.this,
-                                    MainActivity_C.class));
+                                    LogInActivity_C.class));
                         }else{
                             Toast.makeText(LogUpActivity.this,
                                     "Error al crear el usuario", Toast.LENGTH_SHORT).show();
@@ -150,8 +156,6 @@ public class LogUpActivity extends AppCompatActivity {
 
     }
 
-
-
     private boolean checkFields(){
         String correocheck = textEmail.getText().toString();
         String passcheck = textPassword.getText().toString();
@@ -165,4 +169,5 @@ public class LogUpActivity extends AppCompatActivity {
         }
         return true;
    }
+
 }

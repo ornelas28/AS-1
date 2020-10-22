@@ -12,11 +12,11 @@ public class MyAccountActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mi_cuenta);
+        setContentView(R.layout.activity_my_account);
 
-        Button buttonBack = findViewById(R.id.btn_regresar);
-        Button buttonChange = findViewById(R.id.btn_cambios);
-        Button buttonSave = findViewById(R.id.btn_salvar);
+        Button buttonBack = findViewById(R.id.button_back);
+        Button buttonChange = findViewById(R.id.button_change);
+        Button buttonSave = findViewById(R.id.button_save);
 
         buttonBack.setOnClickListener(view -> {
             startActivity(new Intent(MyAccountActivity.this, UserMainActivity_C.class));

@@ -18,7 +18,7 @@ public class SarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sar);
 
-        final Button buttonSend = findViewById(R.id.btn_finalizar);
+        final Button buttonFinish = findViewById(R.id.button_finish);
         final EditText textHourSarEnd = findViewById(R.id.txt_hora_conclusion_sar);
         final EditText textNumberSar = findViewById(R.id.txt_numFrap_sar);
         final EditText textPersonalServiceSar = findViewById(R.id.txt_personal_servicio_sar);
@@ -36,7 +36,7 @@ public class SarActivity extends AppCompatActivity {
         ArrayAdapter<String> stringArrayAdapter1;
         ArrayAdapter<String> stringArrayAdapter2;
 
-        buttonSend.setOnClickListener(view -> {
+        buttonFinish.setOnClickListener(view -> {
             if (!textHourSarEnd.getText().toString().isEmpty()
                     && !textNumberSar.getText().toString().isEmpty()
                     && !textPersonalServiceSar.getText().toString().isEmpty()
@@ -85,9 +85,6 @@ public class SarActivity extends AppCompatActivity {
     public void onBack(View view){
         startActivity(new Intent(this, UserMainActivity_C.class));
         finish();
-
     }
-
-
 
 }

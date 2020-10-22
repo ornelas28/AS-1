@@ -13,7 +13,6 @@ public class UserData {
 
     }
 
-
     public String getLastName() {
         return lastName;
     }

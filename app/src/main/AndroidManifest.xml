@@ -22,7 +22,7 @@
         <activity android:name=".MyAccountActivity" />
         <activity android:name=".AdminMainActivity" />
         <activity android:name=".UserMainActivity_C" />
-        <activity android:name=".Splash_screen">
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,7 +32,7 @@
         <activity
             android:name=".LogUpActivity"
             android:windowSoftInputMode="stateVisible|adjustResize" />
-        <activity android:name=".MainActivity_C" />
+        <activity android:name=".LogInActivity_C" />
     </application>
 
 </manifest>

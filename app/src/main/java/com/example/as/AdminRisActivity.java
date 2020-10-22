@@ -9,6 +9,6 @@ public class AdminRisActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ris_admin);
+        setContentView(R.layout.activity_admin_ris);
     }
 }

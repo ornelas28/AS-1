@@ -293,7 +293,7 @@
                     tools:ignore="OnClick" />
 
                 <Button
-                    android:id="@+id/btn_finalizar"
+                    android:id="@+id/button_finish"
                     android:layout_width="140dp"
                     android:layout_height="63dp"
                     android:layout_marginLeft="10dp"
