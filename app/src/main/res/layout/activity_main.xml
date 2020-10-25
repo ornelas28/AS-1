@@ -76,7 +76,7 @@
         android:id="@+id/btn_registrarme_login"
         android:layout_width="237dp"
         android:layout_height="63dp"
-        android:onClick="registro"
+        android:onClick="logUp"
         android:layout_marginBottom="149dp"
         android:layout_marginEnd="84dp"
         android:layout_marginStart="90dp"
