@@ -8,6 +8,7 @@ public class UserData {
     private String delegation;
     private String name;
     private String type;
+    private String associateNumber;
 
     public UserData() {
 
@@ -61,5 +62,11 @@ public class UserData {
         this.type = type;
     }
 
+    public String getAssociateNumber() {
+        return associateNumber;
+    }
 
+    public void setAssociateNumber(String associateNumber) {
+        this.associateNumber = associateNumber;
+    }
 }

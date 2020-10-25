@@ -13,6 +13,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.text.DateFormat;
 import java.util.Calendar;
 
@@ -86,7 +88,7 @@ public class UserMainActivity_C extends AppCompatActivity implements View.OnClic
                 break;
             }
             case R.id.crd_exit: {
-                finish();
+                FirebaseAuth.getInstance().signOut();
                 break;
             }
             case R.id.crd_email:
