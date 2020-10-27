@@ -14,6 +14,16 @@ public class UserData {
 
     }
 
+    public UserData(String lastName, String password, String email, String delegation, String name, String type, String associateNumber) {
+        this.lastName = lastName;
+        this.password = password;
+        this.email = email;
+        this.delegation = delegation;
+        this.name = name;
+        this.type = type;
+        this.associateNumber = associateNumber;
+    }
+
     public String getLastName() {
         return lastName;
     }

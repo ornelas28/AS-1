@@ -89,6 +89,8 @@ public class UserMainActivity_C extends AppCompatActivity implements View.OnClic
             }
             case R.id.crd_exit: {
                 FirebaseAuth.getInstance().signOut();
+                finish();
+                startActivity(new Intent(UserMainActivity_C.this,SplashActivity.class));
                 break;
             }
             case R.id.crd_email:

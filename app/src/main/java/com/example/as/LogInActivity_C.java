@@ -67,11 +67,12 @@ public class LogInActivity_C extends AppCompatActivity {
                             UserData userData = keyNode.getValue(UserData.class);
                             userDataList.add(userData);
 
-                            String email = userData.getEmail();
-                            Toast.makeText(LogInActivity_C.this, "Email 1 " + email,
+                            String email = userData.getName();
+                            Toast.makeText(LogInActivity_C.this, "Bienvenido:\n "
+                                            + email + " " + userData.getLastName(),
                                     Toast.LENGTH_SHORT).show();
                             String email2 = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-                            if (email.equals(email2)) {
+                            if (userData.getEmail().equals(email2)) {
                                 type = userData.getType();
                                 if (type.equals(ADMIN)) {
                                     startActivity(new Intent(LogInActivity_C.this,
@@ -80,8 +81,7 @@ public class LogInActivity_C extends AppCompatActivity {
                                     startActivity(new Intent(LogInActivity_C.this,
                                             UserMainActivity_C.class));
                                 }
-                                Toast.makeText(LogInActivity_C.this, "type: " + type,
-                                        Toast.LENGTH_SHORT).show();
+
                             }
 
                         }

@@ -49,7 +49,8 @@ public class LogUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_up);
 
-        Spinner spinnerDelegation = findViewById(R.id.spinner_delegation);
+
+        spinnerDelegation = findViewById(R.id.spinner_delegation);
 
         String[] arrayDelegation = new String[]{"Delegación:", "Ameca", "Atotonilco", "Autlán",
                 "Capilla de Guadalupe", "Cd. Guzman", "Chapala", "Cihutlán",
@@ -90,7 +91,7 @@ public class LogUpActivity extends AppCompatActivity {
         if (validateFields()) {
             if (validateEmails()) {
                 if (validatePass()){
-                    if (email.endsWith("@cruzrojamexicana.org.mx\"")) {
+                    if (email.endsWith("@cruzrojamexicana.org.mx")) {
                         createUsser();
                     } else {
                         Toast.makeText(this, "Ese correo no es valido", Toast.LENGTH_SHORT).show();
