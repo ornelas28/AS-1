@@ -6,7 +6,7 @@
     <string name="titulo">Registro</string>
 
 
-    <string-array name="delegaciones">
+    <string-array name="delegations">
         <item>Delegación</item>
         <item>Ameca</item>
         <item>Atotonilco</item>
@@ -47,7 +47,7 @@
         <item>Infarto</item>
     </string-array>
 
-    <string-array name="Solicitud">
+    <string-array name="services">
         <item>Servicio Solicitado Por:</item>
         <item>C-5 - 911</item>
         <item>Ejercito</item>
@@ -140,4 +140,14 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="todo">TODO</string>
     <string name="title_activity_maps">Map</string>
+    <string name="reporte_de_servicio_de_alto_riesgo_sar">Reporte de servicio de alto riesgo (SAR)</string>
+    <string name="ingrese_los_datos_correspondientes">Ingrese los datos correspondientes</string>
+    <string name="tipo_de_paciente">Tipo de paciente</string>
+    <string name="hora_de_inicio">Hora de inicio</string>
+    <string name="fecha">Fecha</string>
+    <string name="lugar">Lugar</string>
+    <string name="guardar">Guardar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="regresar">Regresar</string>
+    <string name="add">add</string>
 </resources>

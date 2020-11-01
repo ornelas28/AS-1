@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.as.classes.ConstantsDataBase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.database.DatabaseReference;
@@ -20,7 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.example.as.classes.ConstantsDataBase.*;
+import static com.example.as.classes.database.ConstantsDataBase.*;
 
 public class LogUpActivity extends AppCompatActivity {
 

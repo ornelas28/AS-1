@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.as.classes.UserData;
+import com.example.as.classes.database.UserData;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -24,8 +24,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.as.classes.ConstantsDataBase.*;
-import static com.example.as.classes.ConstantsDataBase.USERS;
+import static com.example.as.classes.database.ConstantsDataBase.*;
+import static com.example.as.classes.database.ConstantsDataBase.USERS;
 
 public class LogInActivity_C extends AppCompatActivity {
 

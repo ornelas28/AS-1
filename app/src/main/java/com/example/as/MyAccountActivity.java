@@ -15,7 +15,7 @@ public class MyAccountActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_account);
 
         Button buttonBack = findViewById(R.id.button_back);
-        Button buttonChange = findViewById(R.id.button_change);
+        Button buttonChange = findViewById(R.id.button_save);
         Button buttonSave = findViewById(R.id.button_save);
 
         buttonBack.setOnClickListener(view -> {

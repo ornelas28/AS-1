@@ -1,4 +1,4 @@
-package com.example.as.classes;
+package com.example.as.classes.database;
 
 public class UserData {
 

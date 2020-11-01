@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.ListFragment"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.AppCompat.Title"
+        android:text="@string/reporte_de_servicio_de_alto_riesgo_sar" />
+    <Button
+        android:id="@+id/button_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16sp"
+        android:text="@string/add"
+        android:drawableEnd="@drawable/ic_baseline_add_24"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_new"
+        android:layout_height="150sp"
+        android:layout_width="match_parent"
+        android:layout_margin="16sp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_old"
+        android:layout_height="150sp"
+        android:layout_width="match_parent"
+        android:layout_margin="16sp"/>
+
+</LinearLayout>

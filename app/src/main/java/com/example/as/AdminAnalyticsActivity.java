@@ -4,9 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.example.as.classes.ConstantsDataBase;
-
-import static com.example.as.classes.ConstantsDataBase.*;
+import static com.example.as.classes.database.ConstantsDataBase.*;
 
 public class AdminAnalyticsActivity extends AppCompatActivity {
 

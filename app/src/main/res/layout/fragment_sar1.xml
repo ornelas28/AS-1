@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.Sar1Fragment"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:ignore="Autofill">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.AppCompat.Title"
+        android:text="@string/reporte_de_servicio_de_alto_riesgo_sar"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ingrese_los_datos_correspondientes"/>
+
+    <Spinner
+        android:id="@+id/spinner_delegation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16sp"/>
+
+    <Spinner
+        android:id="@+id/spinner_service"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16sp"/>
+
+    <EditText
+        android:id="@+id/edit_type_of_patient"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16sp"
+        android:hint="@string/tipo_de_paciente"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/edit_start_hour"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16sp"
+        android:hint="@string/hora_de_inicio"
+        android:inputType="datetime"/>
+
+    <TextView
+        android:id="@+id/text_place"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/lugar"
+        android:layout_margin="16sp"
+        android:drawableEnd="@drawable/ic_baseline_open_in_new_24"/>
+
+    <TextView
+        android:id="@+id/text_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16sp"
+        android:text="@string/fecha" />
+
+    <Button
+        android:id="@+id/button_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16sp"
+        android:text="@string/guardar"/>
+
+    <Button
+        android:id="@+id/button_back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16sp"
+        android:layout_marginEnd="16sp"
+        android:text="@string/regresar"/>
+
+</LinearLayout>
