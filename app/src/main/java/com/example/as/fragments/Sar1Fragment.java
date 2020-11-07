@@ -152,7 +152,7 @@ public class Sar1Fragment extends Fragment {
             String typePatient = editTypePatient.getText().toString().trim();
             String startHour = editStartHour.getText().toString().trim();
 
-            mapSAR.put(ID, FirebaseAuth.getInstance().getUid());
+            mapSAR.put(ID, FirebaseAuth.getInstance().getCurrentUser().getEmail());
             mapSAR.put(DELEGATION, delegation);
             mapSAR.put(SERVICE, service);
             mapSAR.put(TYPE_PATIENT, typePatient);
