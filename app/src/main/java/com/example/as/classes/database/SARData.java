@@ -7,9 +7,19 @@ public class SARData {
     private String service;
     private String typePatient;
     private String startHour;
-    private String latitude;
-    private String longitude;
+    private Double latitude;
+    private Double longitude;
     private String id;
+
+    public Boolean getState() {
+        return state;
+    }
+
+    public void setState(Boolean state) {
+        this.state = state;
+    }
+
+    private Boolean state;
 
     public SARData() {
     }
@@ -54,19 +64,19 @@ public class SARData {
         this.startHour = startHour;
     }
 
-    public String getLatitude() {
+    public Double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(String latitude) {
+    public void setLatitude(Double latitude) {
         this.latitude = latitude;
     }
 
-    public String getLongitude() {
+    public Double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(String longitude) {
+    public void setLongitude(Double longitude) {
         this.longitude = longitude;
     }
 

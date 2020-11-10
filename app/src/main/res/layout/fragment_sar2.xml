@@ -3,7 +3,298 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.Sar2Fragment">
 
+    <TextView
+        android:id="@+id/lbl_uso"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:text="Uso Exclusivamente interno de la Cruz Roja Mexicana " />
 
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="447dp"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="false"
+
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                app:errorEnabled="true"
+                app:errorTextAppearance="@android:color/holo_red_dark">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_hora_conclusion_sar"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Hora de Conclusion"
+                    android:inputType="time">
+
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_numFrap_sar"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="N° de FRAP"
+                    android:inputType="number"
+                    android:paddingTop="20dp">
+
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_personal_servicio_sar"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="N° Personal en el servicio"
+                    android:inputType="number"
+                    android:paddingTop="20dp">
+
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:layout_width="300dp"
+
+                android:layout_height="wrap_content"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_unidades_servicio_sar"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:hint="N° Unidades en el servicio"
+                    android:inputType="number">
+
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                app:counterEnabled="true"
+                app:counterMaxLength="500"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_desc_sar"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:hint="Breve Descripcion de los hechos"
+                    android:inputType="textMultiLine"
+                    android:lines="9">
+
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_cant_pac_sar"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+
+                    android:hint="Cantidad de Pacientes atendidos"
+                    android:inputType="number">
+
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--g -->
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+
+
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_tipo_paciente"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Tipo de Paciente"
+                    android:inputType="number">
+
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+            <!-- g-->
+
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+
+
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_traspac_sar"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Traslado de pacientes Cruz Roja"
+                    android:inputType="number">
+
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/hosp_trassar"
+                android:layout_width="300dp"
+                android:layout_height="18dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp">
+
+            </androidx.appcompat.widget.AppCompatSpinner>
+
+            <!--  <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/lbl_otro_hosp"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_otro_hosp"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Otro Hospital"
+                    android:inputType="text"
+                    tools:visibility="invisible">
+
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout> -->
+
+
+            <!--Spinner-->
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/autoridadespubs"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp">
+
+            </androidx.appcompat.widget.AppCompatSpinner>
+            <!--Spinner-->
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/autoridades_crm"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp">
+
+            </androidx.appcompat.widget.AppCompatSpinner>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                app:counterEnabled="true"
+                app:counterMaxLength="200"
+                app:errorEnabled="true"
+                app:errorTextAppearance="@android:color/holo_red_dark">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_observaciones_Sar"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:hint="Observaciones"
+                    android:inputType="textMultiLine"
+                    android:lines="9"
+                    android:textAllCaps="true">
+
+                </com.google.android.material.textfield.TextInputEditText>
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--<com.google.android.material.textfield.TextInputLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical"
+                app:errorEnabled="true">-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_atras"
+                    android:layout_width="140dp"
+                    android:layout_height="63dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/button4"
+                    android:onClick="onBack"
+                    android:text="Guardar"
+
+                    android:textSize="15dp"
+                    tools:ignore="OnClick" />
+
+                <Button
+                    android:id="@+id/button_finish"
+                    android:layout_width="140dp"
+                    android:layout_height="63dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/button3"
+                    android:text="Finalizar" />
+            </LinearLayout>
+
+            <!--</com.google.android.material.textfield.TextInputLayout>-->
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
 </FrameLayout>

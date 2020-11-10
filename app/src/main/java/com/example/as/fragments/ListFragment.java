@@ -22,15 +22,21 @@ import com.example.as.classes.database.UserData;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListFragment extends Fragment implements SARAdapter.OnSARListener {
+import static com.example.as.classes.database.ConstantsDataBase.NEW;
+
+public class ListFragment extends Fragment implements SARAdapter.OnSARListener, SARAdapter.OnSarEditListener {
 
     private final String args;
+    private List<SARData> listNew;
+    private List<SARData> listOld;
+
 
     public ListFragment(String args) {
         this.args = args;
@@ -48,25 +54,39 @@ public class ListFragment extends Fragment implements SARAdapter.OnSARListener {
         View view = getView();
         TextView textTitle =  view.findViewById(R.id.text_title);
         Button buttonAdd = view.findViewById(R.id.button_add);
-        RecyclerView listOld = view.findViewById(R.id.list_old);
-        RecyclerView listNew = view.findViewById(R.id.list_new);
+        RecyclerView recyclerListOld = view.findViewById(R.id.list_old);
+        RecyclerView recyclerListNew = view.findViewById(R.id.list_new);
 
-        FirebaseDatabase.getInstance().getReference(ConstantsDataBase.SARS).addValueEventListener
-                (new ValueEventListener() {
+        DatabaseReference databaseReference = FirebaseDatabase
+                .getInstance().getReference(ConstantsDataBase.SARS);
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                List<SARData> list = new ArrayList<>();
+                List<SARData> listNew;
+                listNew= new ArrayList<>();
+                List<SARData> listOld;
+                listOld= new ArrayList<>();
                 for(DataSnapshot keynode : snapshot.getChildren()){
-                    SARData sarData= keynode.getValue(SARData.class);
+                    SARData sarData = null;
+                    sarData = keynode.getValue(SARData.class);
 
                     if (sarData.getId().equals(FirebaseAuth.getInstance().getCurrentUser().getEmail())){
-                        list.add(sarData);
+                        if (sarData.getState() == false) {
+                            listNew.add(sarData);
+                        }
+                        else {
+                            listOld.add(sarData);
+                        }
                     }
                 }
-                SARAdapter sarAdapter = new SARAdapter(getContext(),list,ListFragment.this);
-                listNew.setAdapter(sarAdapter);
-                listNew.setLayoutManager(new LinearLayoutManager
-                        (getContext(),LinearLayoutManager.VERTICAL,false));
+                SARAdapter sarAdapter = new SARAdapter(getContext(),listNew,ListFragment.this::onSARClick);
+                recyclerListNew.setAdapter(sarAdapter);
+                recyclerListNew.setLayoutManager(new LinearLayoutManager
+                        (getContext(),LinearLayoutManager.HORIZONTAL,false));
+                SARAdapter sarAdapter1 = new SARAdapter(getContext(),listOld,ListFragment.this::OnSarEditClick);
+                recyclerListOld.setAdapter(sarAdapter1);
+                recyclerListOld.setLayoutManager(new LinearLayoutManager
+                        (getContext(),LinearLayoutManager.HORIZONTAL,false));
             }
 
             @Override
@@ -90,6 +110,13 @@ public class ListFragment extends Fragment implements SARAdapter.OnSARListener {
 
     @Override
     public void onSARClick(int position) {
+        SARData sarData = listNew.get(position);
+        getFragmentManager().beginTransaction().replace(R.id.content,
+                new PagerFragment(args, sarData, NEW)).commit();
+    }
+
+    @Override
+    public void OnSarEditClick(int position) {
 
     }
 }

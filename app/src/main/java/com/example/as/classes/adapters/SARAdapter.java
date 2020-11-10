@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -33,6 +34,15 @@ public class SARAdapter extends RecyclerView.Adapter<SARAdapter.SARHolder> imple
     private Context context;
     private List<SARData> sarDataList;
     private List<SARData> sarDataListFilter;
+
+    public SARAdapter(Context context, List<SARData> sarDataList, List<SARData> sarDataListFilter, OnSarEditListener onSarEditListener) {
+        this.context = context;
+        this.sarDataList = sarDataList;
+        this.sarDataListFilter = sarDataListFilter;
+        this.onSarEditListener = onSarEditListener;
+    }
+
+    private SARAdapter.OnSarEditListener onSarEditListener;
 
     public SARAdapter(Context context, List<SARData> sarDataList, OnSARListener onSARListener) {
         this.context = context;
@@ -116,6 +126,7 @@ public class SARAdapter extends RecyclerView.Adapter<SARAdapter.SARHolder> imple
     public static class SARHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         private TextView date,delegation,service,type_patient,name;
+        private ImageView iv;
         private LinearLayout linearLayout;
         private SARAdapter.OnSARListener onSARListener;
         public SARHolder(@NonNull View itemView, SARAdapter.OnSARListener onSARListener) {
@@ -130,6 +141,20 @@ public class SARAdapter extends RecyclerView.Adapter<SARAdapter.SARHolder> imple
             this.onSARListener=onSARListener;
         }
 
+        public SARHolder(@NonNull View itemView, SARAdapter.OnSarEditListener onSarEditListener) {
+            super(itemView);
+            date= itemView.findViewById(R.id.text_date);
+            delegation=itemView.findViewById(R.id.text_delegation);
+            service=itemView.findViewById(R.id.text_service);
+            type_patient=itemView.findViewById(R.id.text_typePatient);
+            name=itemView.findViewById(R.id.text_name);
+            iv=itemView.findViewById(R.id.image_edit);
+            iv.setOnClickListener(view -> {
+                onSarEditListener.OnSarEditClick(getAdapterPosition());
+            });
+            this.onSARListener=onSARListener;
+        }
+
         @Override
         public void onClick(View view) {
             onSARListener.onSARClick(getAdapterPosition());
@@ -139,4 +164,10 @@ public class SARAdapter extends RecyclerView.Adapter<SARAdapter.SARHolder> imple
     public interface OnSARListener {
         void onSARClick(int position);
     }
+
+    public interface OnSarEditListener{
+        void OnSarEditClick(int position);
+    }
+
+
 }

@@ -23,6 +23,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.as.R;
+import com.example.as.classes.adapters.SARAdapter;
+import com.example.as.classes.database.SARData;
+import com.example.as.classes.database.UserData;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -43,18 +46,26 @@ public class Sar1Fragment extends Fragment {
     private TextView textPlace;
     private Button buttonSave;
     private Button buttonBack;
-    private int code;
+    private String code;
     private View view;
-
+    private SARData sarData;
     private String date;
     private double latitude;
     private double longitude;
     private String args;
 
-    public Sar1Fragment (int code, String args) {
+    public Sar1Fragment (String code, String args, SARData sarData) {
+        this.code = code;
+        this.args = args;
+        this.sarData= sarData;
+    }
+
+    public Sar1Fragment (String code, String args) {
         this.code = code;
         this.args = args;
     }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,18 +77,8 @@ public class Sar1Fragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        init();
-        buttonSave.setOnClickListener(v -> onSave());
-        buttonBack.setOnClickListener(v -> onBack());
-    }
-
-    private void init() {
         ArrayAdapter<String> arrayDelegation;
         ArrayAdapter<String> arrayService;
-        Calendar calendar;
-        LocationManager locationManager;
-        LocationListener locationListener;
-
         spinnerDelegation = view.findViewById(R.id.spinner_delegation);
         spinnerService = view.findViewById(R.id.spinner_service);
         editTypePatient = view.findViewById(R.id.edit_type_of_patient);
@@ -92,6 +93,20 @@ public class Sar1Fragment extends Fragment {
         arrayService = new ArrayAdapter<>(getContext(),
                 android.R.layout.simple_spinner_item, getResources()
                 .getStringArray(R.array.services));
+        arrayDelegation.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        arrayService.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerDelegation.setAdapter(arrayDelegation);
+        spinnerService.setAdapter(arrayService);
+        init();
+        buttonSave.setOnClickListener(v -> onSave());
+        buttonBack.setOnClickListener(v -> onBack());
+    }
+
+    private void init() {
+        Calendar calendar;
+        LocationManager locationManager;
+        LocationListener locationListener;
+
         calendar = Calendar.getInstance();
         locationManager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
 
@@ -102,8 +117,7 @@ public class Sar1Fragment extends Fragment {
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION},1);
         }
 
-        arrayDelegation.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        arrayService.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
 
         locationListener = new LocationListener() {
             @Override
@@ -125,10 +139,27 @@ public class Sar1Fragment extends Fragment {
         locationManager.requestLocationUpdates
                 (LocationManager.NETWORK_PROVIDER,0,0,locationListener);
 
-        spinnerDelegation.setAdapter(arrayDelegation);
-        spinnerService.setAdapter(arrayService);
         textDate.setText(DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime()));
         date = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+    }
+
+    private void initOld(){
+        for (int i=0; i<=spinnerDelegation.getAdapter().getCount(); i++){
+            if (!sarData.getDelegation().equals(spinnerDelegation.getSelectedItem())){
+                spinnerDelegation.setSelection(i);
+            }
+        }
+
+        for (int i=0; i<=spinnerService.getAdapter().getCount(); i++){
+            if (!sarData.getService().equals(spinnerService.getSelectedItem())){
+                spinnerService.setSelection(i);
+            }
+        }
+
+        editTypePatient.setText(sarData.getTypePatient());
+        editStartHour.setText(sarData.getStartHour());
+        textDate.setText(sarData.getDate());
+        textPlace.setText(sarData.getLatitude() + "" + sarData.getLongitude());
     }
 
     private void onBack() {
