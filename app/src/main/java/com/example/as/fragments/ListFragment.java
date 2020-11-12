@@ -36,10 +36,19 @@ public class ListFragment extends Fragment implements SARAdapter.OnSARListener, 
     private final String args;
     private List<SARData> listNew;
     private List<SARData> listOld;
+    private List<String> listKeysNew;
+    private List<String> listKeysOld;
+    private Boolean stateAdmin=false;
+
 
 
     public ListFragment(String args) {
         this.args = args;
+    }
+
+    public ListFragment(String args, Boolean stateAdmin){
+        this.args=args;
+        this.stateAdmin=stateAdmin;
     }
 
     @Override
@@ -62,20 +71,34 @@ public class ListFragment extends Fragment implements SARAdapter.OnSARListener, 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                List<SARData> listNew;
+
                 listNew= new ArrayList<>();
-                List<SARData> listOld;
                 listOld= new ArrayList<>();
+                listKeysNew= new ArrayList<>();
+                listKeysOld= new ArrayList<>();
                 for(DataSnapshot keynode : snapshot.getChildren()){
                     SARData sarData = null;
                     sarData = keynode.getValue(SARData.class);
 
-                    if (sarData.getId().equals(FirebaseAuth.getInstance().getCurrentUser().getEmail())){
+                    if (stateAdmin){
                         if (sarData.getState() == false) {
                             listNew.add(sarData);
+                            listKeysNew.add(keynode.getKey());
                         }
                         else {
                             listOld.add(sarData);
+                            listKeysOld.add(keynode.getKey());
+                        }
+                    }else{
+                        if (sarData.getId().equals(FirebaseAuth.getInstance().getCurrentUser().getEmail())){
+                            if (sarData.getState() == false) {
+                                listNew.add(sarData);
+                                listKeysNew.add(keynode.getKey());
+                            }
+                            else {
+                                listOld.add(sarData);
+                                listKeysOld.add(keynode.getKey());
+                            }
                         }
                     }
                 }
@@ -111,8 +134,12 @@ public class ListFragment extends Fragment implements SARAdapter.OnSARListener, 
     @Override
     public void onSARClick(int position) {
         SARData sarData = listNew.get(position);
+        sarData.setKey(listKeysNew.get(position));
         getFragmentManager().beginTransaction().replace(R.id.content,
                 new PagerFragment(args, sarData, NEW)).commit();
+        getFragmentManager().beginTransaction().replace(R.id.content,
+                new PagerFragment(args, sarData, NEW)).commit();
+
     }
 
     @Override

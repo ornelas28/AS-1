@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 import com.example.as.R;
 import com.example.as.classes.adapters.SARAdapter;
+import com.example.as.classes.database.ConstantsDataBase;
 import com.example.as.classes.database.SARData;
 import com.example.as.classes.database.UserData;
 import com.google.firebase.auth.FirebaseAuth;
@@ -44,20 +45,20 @@ public class Sar1Fragment extends Fragment {
     private EditText editStartHour;
     private TextView textDate;
     private TextView textPlace;
-    private Button buttonSave;
-    private Button buttonBack;
-    private String code;
+    private final String code;
     private View view;
     private SARData sarData;
     private String date;
     private double latitude;
     private double longitude;
-    private String args;
+    private final String args;
+    private Boolean stateConstructor=false;
 
     public Sar1Fragment (String code, String args, SARData sarData) {
         this.code = code;
         this.args = args;
         this.sarData= sarData;
+        this.stateConstructor=true;
     }
 
     public Sar1Fragment (String code, String args) {
@@ -85,8 +86,8 @@ public class Sar1Fragment extends Fragment {
         editStartHour = view.findViewById(R.id.edit_start_hour);
         textDate = view.findViewById(R.id.text_date);
         textPlace = view.findViewById(R.id.text_place);
-        buttonSave = view.findViewById(R.id.button_save);
-        buttonBack = view.findViewById(R.id.button_back);
+        Button buttonSave = view.findViewById(R.id.button_save);
+        Button buttonBack = view.findViewById(R.id.button_back);
         arrayDelegation = new ArrayAdapter<>(getContext(),
                 android.R.layout.simple_spinner_item, getResources()
                 .getStringArray(R.array.delegations));
@@ -97,8 +98,18 @@ public class Sar1Fragment extends Fragment {
         arrayService.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerDelegation.setAdapter(arrayDelegation);
         spinnerService.setAdapter(arrayService);
-        init();
-        buttonSave.setOnClickListener(v -> onSave());
+        if(!stateConstructor){
+            init();
+        }else{
+            initOld();
+        }
+        buttonSave.setOnClickListener(v -> {
+            if (stateConstructor){
+                onUpdate();
+            }else{
+                onSave();
+            }
+        });
         buttonBack.setOnClickListener(v -> onBack());
     }
 
@@ -194,6 +205,37 @@ public class Sar1Fragment extends Fragment {
             mapSAR.put(STATE, false);
 
             FirebaseDatabase.getInstance().getReference().child(SARS).push().setValue(mapSAR);
+
+        }
+    }
+
+    private void onUpdate(){
+        boolean stateSpinnerDelegation = spinnerDelegation.getSelectedItem().toString()
+                .equalsIgnoreCase("Delegación");
+        boolean stateSpinnerService = spinnerService.getSelectedItem().toString()
+                .equalsIgnoreCase("Servicio Solicitado Por:");
+
+        if(!stateSpinnerDelegation && !stateSpinnerService
+                && !editTypePatient.getText().toString().isEmpty()
+                && !editStartHour.getText().toString().isEmpty()) {
+
+            Map<String, Object> mapSAR = new HashMap<>();
+            String delegation = spinnerDelegation.getSelectedItem().toString();
+            String service = spinnerService.getSelectedItem().toString();
+            String typePatient = editTypePatient.getText().toString().trim();
+            String startHour = editStartHour.getText().toString().trim();
+
+            mapSAR.put(ID, FirebaseAuth.getInstance().getCurrentUser().getEmail());
+            mapSAR.put(DELEGATION, delegation);
+            mapSAR.put(SERVICE, service);
+            mapSAR.put(TYPE_PATIENT, typePatient);
+            mapSAR.put(START_HOUR, startHour);
+            mapSAR.put(DATE, sarData.getDate());
+            mapSAR.put(LATITUDE, sarData.getLatitude());
+            mapSAR.put(LONGITUDE, sarData.getLongitude());
+            mapSAR.put(STATE, false);
+
+            FirebaseDatabase.getInstance().getReference().child(SARS).child(sarData.getKey()).updateChildren(mapSAR);
 
         }
     }

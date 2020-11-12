@@ -11,6 +11,16 @@ public class SARData {
     private Double longitude;
     private String id;
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    private String key;
+
     public Boolean getState() {
         return state;
     }
