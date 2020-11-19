@@ -91,6 +91,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_rowWeight="1"
+            android:id="@+id/crd_analytics"
             android:foreground="@drawable/border_cardview"
             app:cardBackgroundColor="#C1C0C1"
             app:cardCornerRadius="8dp"

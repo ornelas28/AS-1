@@ -20,7 +20,7 @@ public class SarAdminActivity extends AppCompatActivity {
         String args = getIntent().getExtras().getString(CODE);
 
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, new ListFragment(args, true)).commit();
+                .replace(R.id.container_sar, new ListFragment(args, true)).commit();
 
     }
 }

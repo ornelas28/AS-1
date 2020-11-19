@@ -13,9 +13,11 @@ import com.example.as.R;
 public class Sar2Fragment extends Fragment {
 
     private String args;
+    private Boolean stateAdmin;
 
-    public Sar2Fragment(String args) {
+    public Sar2Fragment(String args, Boolean stateAdmin) {
         this.args = args;
+        this.stateAdmin= stateAdmin;
     }
 
     @Override

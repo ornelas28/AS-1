@@ -53,17 +53,20 @@ public class Sar1Fragment extends Fragment {
     private double longitude;
     private final String args;
     private Boolean stateConstructor=false;
+    private Boolean stateAdmin=false;
 
-    public Sar1Fragment (String code, String args, SARData sarData) {
+    public Sar1Fragment (String code, String args, SARData sarData, Boolean stateAdmin) {
         this.code = code;
         this.args = args;
         this.sarData= sarData;
         this.stateConstructor=true;
+        this.stateAdmin=stateAdmin;
     }
 
-    public Sar1Fragment (String code, String args) {
+    public Sar1Fragment (String code, String args, Boolean stateAdmin) {
         this.code = code;
         this.args = args;
+        this.stateAdmin=stateAdmin;
     }
 
 
@@ -174,8 +177,13 @@ public class Sar1Fragment extends Fragment {
     }
 
     private void onBack() {
-        getFragmentManager().beginTransaction()
-                .replace(R.id.content, new ListFragment(args)).commit();
+        if (stateAdmin){
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.container_sar, new ListFragment(args,stateAdmin)).commit();
+        }else {
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.container_sar, new ListFragment(args)).commit();
+        }
     }
 
     private void onSave() {

@@ -126,8 +126,13 @@ public class ListFragment extends Fragment implements SARAdapter.OnSARListener, 
         }
 
         buttonAdd.setOnClickListener(v -> {
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.content, new PagerFragment(args)).commit();
+           if (stateAdmin){
+               getFragmentManager().beginTransaction()
+                       .replace(R.id.container_sar, new PagerFragment(args,true)).commit();
+           }else{
+               getFragmentManager().beginTransaction()
+                       .replace(R.id.container_sar, new PagerFragment(args)).commit();
+           }
         });
     }
 
@@ -135,10 +140,14 @@ public class ListFragment extends Fragment implements SARAdapter.OnSARListener, 
     public void onSARClick(int position) {
         SARData sarData = listNew.get(position);
         sarData.setKey(listKeysNew.get(position));
-        getFragmentManager().beginTransaction().replace(R.id.content,
-                new PagerFragment(args, sarData, NEW)).commit();
-        getFragmentManager().beginTransaction().replace(R.id.content,
-                new PagerFragment(args, sarData, NEW)).commit();
+        if (stateAdmin){
+            getFragmentManager().beginTransaction().replace(R.id.container_sar,
+                    new PagerFragment(args, sarData, NEW, true)).commit();
+        }else{
+            getFragmentManager().beginTransaction().replace(R.id.container_sar,
+                    new PagerFragment(args, sarData, NEW, false)).commit();
+        }
+
 
     }
 

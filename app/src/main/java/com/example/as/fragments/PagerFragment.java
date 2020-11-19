@@ -23,19 +23,26 @@ public class PagerFragment extends Fragment {
     private String args;
     private SARData sarData;
     private String code;
+    private Boolean stateAdmin=false;
 
     public PagerFragment(String args) {
         this.args = args;
         this.code="";
     }
 
-    public PagerFragment(String args, SARData sarData, String code)
-    {this.args=args; this.sarData=sarData; this.code=code;}
+    public PagerFragment(String args, Boolean stateAdmin){
+        this.args=args;
+        this.stateAdmin=stateAdmin;
+        this.code="";
+    }
+
+    public PagerFragment(String args, SARData sarData, String code, Boolean stateAdmin)
+    {this.args=args; this.sarData=sarData; this.code=code; this.stateAdmin=stateAdmin;}
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, ViewGroup container_sar,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pager, container, false);
+        return inflater.inflate(R.layout.fragment_pager, container_sar, false);
     }
 
     @Override
@@ -45,13 +52,13 @@ public class PagerFragment extends Fragment {
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getFragmentManager());
         if (args.equals(SAR)) {
-            if(code.equals(NEW)){
-                adapter.addFragment(new Sar1Fragment(OLD, args, sarData));
-                adapter.addFragment(new Sar2Fragment(args));
+           if(code.equals(NEW)){
+                adapter.addFragment(new Sar1Fragment(OLD, args, sarData, stateAdmin));
+                adapter.addFragment(new Sar2Fragment(args, stateAdmin));
             }
             if (code.equals("")){
-                adapter.addFragment(new Sar1Fragment("", args));
-                adapter.addFragment(new Sar2Fragment(args));
+                adapter.addFragment(new Sar1Fragment("", args, stateAdmin));
+                adapter.addFragment(new Sar2Fragment(args, stateAdmin));
             }
         }
         viewPager.setAdapter(adapter);
