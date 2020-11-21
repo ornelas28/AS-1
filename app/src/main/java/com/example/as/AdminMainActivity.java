@@ -22,6 +22,7 @@ public class AdminMainActivity extends AppCompatActivity {
         CardView singOut = findViewById(R.id.sing_out);
         CardView sar= findViewById(R.id.crd_sar);
         CardView analytics = findViewById(R.id.crd_analytics);
+        CardView pendings = findViewById(R.id.crd_pendings);
 
         sar.setOnClickListener( v -> {
             Intent intent = new Intent(AdminMainActivity.this, SarAdminActivity.class);
@@ -39,6 +40,9 @@ public class AdminMainActivity extends AppCompatActivity {
             startActivity(new Intent(AdminMainActivity.this,AdminAnalyticsActivity.class));
 
         });
+
+        pendings.setOnClickListener(view ->
+                startActivity(new Intent(AdminMainActivity.this,AdminPendingAntivity.class)));
 
 
 

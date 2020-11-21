@@ -18,6 +18,6 @@ public class SendActivity extends AppCompatActivity {
         String args = getIntent().getExtras().getString(CODE);
 
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.content, new ListFragment(args)).commit();
+                .replace(R.id.container_sar, new ListFragment(args)).commit();
     }
 }

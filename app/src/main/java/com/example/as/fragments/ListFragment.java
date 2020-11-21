@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -103,6 +104,9 @@ public class ListFragment extends Fragment implements SARAdapter.OnSARListener, 
                     }
                 }
                 SARAdapter sarAdapter = new SARAdapter(getContext(),listNew,ListFragment.this::onSARClick);
+               /* DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(),DividerItemDecoration.HORIZONTAL);
+                dividerItemDecoration.setDrawable(getResources().getDrawable(R.drawable.recyclerview_divider));
+                recyclerListNew.addItemDecoration(dividerItemDecoration);*/
                 recyclerListNew.setAdapter(sarAdapter);
                 recyclerListNew.setLayoutManager(new LinearLayoutManager
                         (getContext(),LinearLayoutManager.HORIZONTAL,false));
@@ -110,6 +114,9 @@ public class ListFragment extends Fragment implements SARAdapter.OnSARListener, 
                 recyclerListOld.setAdapter(sarAdapter1);
                 recyclerListOld.setLayoutManager(new LinearLayoutManager
                         (getContext(),LinearLayoutManager.HORIZONTAL,false));
+
+
+
             }
 
             @Override

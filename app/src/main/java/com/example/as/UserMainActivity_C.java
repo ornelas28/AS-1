@@ -1,6 +1,9 @@
 package com.example.as;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -17,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.List;
 
 import static com.example.as.classes.database.ConstantsDataBase.*;
 
@@ -32,6 +36,8 @@ public class UserMainActivity_C extends AppCompatActivity implements View.OnClic
         CardView cardViewEmail = findViewById(R.id.crd_email);
         CardView cardViewMyAccount = findViewById(R.id.crd_micuenta);
         CardView cardViewRis = findViewById(R.id.crd_ris);
+        CardView cardViewTelegram= findViewById(R.id.crd_telegram);
+        CardView cardViewfaqs=findViewById(R.id.crd_faqs);
 
 
         cardViewSar.setOnClickListener(this);
@@ -39,6 +45,8 @@ public class UserMainActivity_C extends AppCompatActivity implements View.OnClic
         cardViewEmail.setOnClickListener(this);
         cardViewMyAccount.setOnClickListener(this);
         cardViewRis.setOnClickListener(this);
+        cardViewTelegram.setOnClickListener(this);
+        cardViewfaqs.setOnClickListener(this);
 
     }
 
@@ -67,6 +75,24 @@ public class UserMainActivity_C extends AppCompatActivity implements View.OnClic
                 startActivity(new Intent(UserMainActivity_C.this, MyAccountActivity.class));
                 finish();
                 break;
+            case R.id.crd_telegram:{
+                Uri url = Uri.parse("https://t.me/joinchat/AAAAAFSLKcXdjom0C2uFnA");
+                Intent telegram = new Intent(Intent.ACTION_VIEW, url);
+                PackageManager packageManager = getPackageManager();
+                List<ResolveInfo> activities = packageManager.queryIntentActivities(telegram, 0);
+                boolean isIntentSafe = activities.size() > 0;
+
+                if (isIntentSafe) {
+                    startActivity(telegram);
+                }
+                break;
+            }
+
+            case R.id.crd_faqs:{
+                startActivity(new Intent(UserMainActivity_C.this, FaqsActivity.class));
+                finish();
+                break;
+            }
             case R.id.crd_ris: {
                 final Button buttonSend;
                 final Spinner spinnerNumber;

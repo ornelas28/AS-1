@@ -70,7 +70,7 @@ public class LogInActivity_C extends AppCompatActivity {
                             String name = userData.getName();
                             String email2 = FirebaseAuth.getInstance().getCurrentUser().getEmail();
                             if (userData.getEmail().equals(email2)) {
-                                Toast.makeText(LogInActivity_C.this, "Hola  " + name,
+                                Toast.makeText(LogInActivity_C.this, "Bienvenido  " + name,
                                         Toast.LENGTH_SHORT).show();
                                 type = userData.getType();
                                 if (type.equals(ADMIN)) {

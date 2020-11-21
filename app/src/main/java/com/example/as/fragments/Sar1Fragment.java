@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.as.R;
 import com.example.as.classes.adapters.SARAdapter;
@@ -43,8 +44,8 @@ public class Sar1Fragment extends Fragment {
     private Spinner spinnerService;
     private EditText editTypePatient;
     private EditText editStartHour;
-    private TextView textDate;
-    private TextView textPlace;
+    private EditText textDate;
+    private EditText textPlace;
     private final String code;
     private View view;
     private SARData sarData;
