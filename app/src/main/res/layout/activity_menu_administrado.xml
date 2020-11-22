@@ -39,7 +39,7 @@
         <!--columna 1-->
         <!--fila 1-->
         <androidx.cardview.widget.CardView
-            android:id="@+id/activity_main_admin"
+            android:id="@+id/crd_myaccount"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"

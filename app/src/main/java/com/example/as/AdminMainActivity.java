@@ -23,6 +23,14 @@ public class AdminMainActivity extends AppCompatActivity {
         CardView sar= findViewById(R.id.crd_sar);
         CardView analytics = findViewById(R.id.crd_analytics);
         CardView pendings = findViewById(R.id.crd_pendings);
+        CardView myaccount= findViewById(R.id.crd_myaccount);
+
+        myaccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AdminMainActivity.this, MyAccountActivity.class));
+            }
+        });
 
         sar.setOnClickListener( v -> {
             Intent intent = new Intent(AdminMainActivity.this, SarAdminActivity.class);

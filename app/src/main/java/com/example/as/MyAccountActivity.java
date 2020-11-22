@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.as.classes.database.ConstantsDataBase;
+import com.example.as.classes.database.SARData;
 import com.example.as.classes.database.UserData;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -19,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.net.UnknownServiceException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,6 +29,7 @@ import java.util.Map;
 import static com.example.as.classes.database.ConstantsDataBase.ASSOCIATE_NUMBER;
 import static com.example.as.classes.database.ConstantsDataBase.DELEGATION;
 import static com.example.as.classes.database.ConstantsDataBase.EMAIL;
+import static com.example.as.classes.database.ConstantsDataBase.ID;
 import static com.example.as.classes.database.ConstantsDataBase.LAST_NAME;
 import static com.example.as.classes.database.ConstantsDataBase.NAME;
 import static com.example.as.classes.database.ConstantsDataBase.PASSWORD;
@@ -36,14 +39,8 @@ import static com.example.as.classes.database.ConstantsDataBase.USERS;
 public class MyAccountActivity extends AppCompatActivity {
 
     private final List<UserData> userDataList = new ArrayList<>();
-    Button buttonBack = findViewById(R.id.button_back);
-    Button buttonChange = findViewById(R.id.button_change);
-    Button buttonSave = findViewById(R.id.button_save);
-    EditText Name = findViewById(R.id.txt_Nombre_micuenta);
-    EditText LastName = findViewById(R.id.txt_apellido_micuenta);
-    EditText Email = findViewById(R.id.txt_correo_micuenta);
-    EditText Pass = findViewById(R.id.txt_contraseña_micuenta);
-    EditText Delegation = findViewById(R.id.txt_delegacion_micuenta);
+
+
     DatabaseReference databaseReference;
 
 
@@ -51,6 +48,15 @@ public class MyAccountActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_account);
+
+        Button buttonBack = findViewById(R.id.button_back);
+        Button buttonChange = findViewById(R.id.button_change);
+        Button buttonSave = findViewById(R.id.button_save);
+        EditText Name = findViewById(R.id.txt_Nombre_micuenta);
+        EditText LastName = findViewById(R.id.txt_apellido_micuenta);
+        EditText Email = findViewById(R.id.txt_correo_micuenta);
+        EditText Pass = findViewById(R.id.txt_contraseña_micuenta);
+        EditText Delegation = findViewById(R.id.txt_delegacion_micuenta);
 
 
         Name.setFocusable(false);
@@ -75,19 +81,21 @@ public class MyAccountActivity extends AppCompatActivity {
                 for(DataSnapshot key : snapshot.getChildren()) {
                     keys.add(key.getKey());
                     UserData userData = key.getValue(UserData.class);
-                    userDataList.add(userData);
+                    if(userData.getEmail().equals(FirebaseAuth.getInstance().getCurrentUser().getEmail())){
+                        userDataList.add(userData);
 
-                    String nombre = userData.getName();
-                    String apeliido= userData.getLastName();
-                    String correo = userData.getEmail();
-                    String na= userData.getAssociateNumber();
-                    String delegacion= userData.getDelegation();
+                        String nombre = userData.getName();
+                        String apeliido= userData.getLastName();
+                        String correo = userData.getEmail();
+                        String na= userData.getAssociateNumber();
+                        String delegacion= userData.getDelegation();
 
-                    Name.setText(nombre);
-                    LastName.setText(apeliido);
-                    Email.setText(correo);
-                    Pass.setText(na);
-                    Delegation.setText(delegacion);
+                        Name.setText(nombre);
+                        LastName.setText(apeliido);
+                        Email.setText(correo);
+                        Pass.setText(na);
+                        Delegation.setText(delegacion);
+                    }
                 }
             }
 
@@ -105,13 +113,13 @@ public class MyAccountActivity extends AppCompatActivity {
         });
 
         buttonChange.setOnClickListener(v -> {
-            /*buttonSave.setEnabled(true);
-            Name.setFocusable(true);
+            buttonSave.setEnabled(true);
             Name.setEnabled(true);
+            Name.setFocusableInTouchMode(true);
             LastName.setEnabled(true);
-            Email.setEnabled(true);
-            Pass.setEnabled(true);
-            Delegation.setEnabled(true);*/
+            LastName.setFocusableInTouchMode(true);
+            Delegation.setEnabled(true);
+            Delegation.setFocusableInTouchMode(true);
 
 
         });
@@ -119,12 +127,24 @@ public class MyAccountActivity extends AppCompatActivity {
 
         buttonSave.setOnClickListener(v -> {
 
+      Map<String, Object> mapDatos = new HashMap<>();
+       String nombre= Name.getText().toString().trim();
+       String apellido= LastName.getText().toString().trim();
+       String delegacion= Delegation.getText().toString().trim();
+
+       mapDatos.put(NAME, nombre);
+       mapDatos.put(LAST_NAME, apellido);
+       mapDatos.put(DELEGATION, delegacion);
+
+       FirebaseDatabase.getInstance().getReference().child(USERS).updateChildren(mapDatos);
+
 
 
 
     });
 
     }
+
 
 
 }
