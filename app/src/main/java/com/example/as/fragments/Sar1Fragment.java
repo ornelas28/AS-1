@@ -8,6 +8,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -28,6 +29,8 @@ import com.example.as.classes.adapters.SARAdapter;
 import com.example.as.classes.database.ConstantsDataBase;
 import com.example.as.classes.database.SARData;
 import com.example.as.classes.database.UserData;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -213,7 +216,12 @@ public class Sar1Fragment extends Fragment {
             mapSAR.put(LONGITUDE, latitude);
             mapSAR.put(STATE, false);
 
-            FirebaseDatabase.getInstance().getReference().child(SARS).push().setValue(mapSAR);
+            FirebaseDatabase.getInstance().getReference().child(SARS).push().setValue(mapSAR)
+                    .addOnSuccessListener(aVoid -> Toast.makeText(getContext()
+                            , "Datos enviados correctamente", Toast.LENGTH_SHORT).show())
+                    .addOnFailureListener(e -> Toast.makeText(getContext()
+                            , "Ha ocurrido un error, verifica e intenta de nuevo" + "\n" + e,
+                            Toast.LENGTH_SHORT).show());
 
         }
     }
@@ -244,7 +252,11 @@ public class Sar1Fragment extends Fragment {
             mapSAR.put(LONGITUDE, sarData.getLongitude());
             mapSAR.put(STATE, false);
 
-            FirebaseDatabase.getInstance().getReference().child(SARS).child(sarData.getKey()).updateChildren(mapSAR);
+            FirebaseDatabase.getInstance().getReference().child(SARS).child(sarData.getKey())
+                    .updateChildren(mapSAR).addOnSuccessListener(aVoid -> Toast.makeText(getContext()
+                    , "Los datos se han actualizado de manera exitosa",
+                            Toast.LENGTH_SHORT).show()).addOnFailureListener(e -> Toast.makeText(getContext()
+                    , "Ha ocurrido un error, verifica e intenta de nuevo" + "\n" + e, Toast.LENGTH_SHORT).show());
 
         }
     }

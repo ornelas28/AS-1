@@ -39,6 +39,7 @@ import static com.example.as.classes.database.ConstantsDataBase.USERS;
 public class MyAccountActivity extends AppCompatActivity {
 
     private final List<UserData> userDataList = new ArrayList<>();
+    private UserData userData;
 
 
     DatabaseReference databaseReference;
@@ -136,7 +137,8 @@ public class MyAccountActivity extends AppCompatActivity {
        mapDatos.put(LAST_NAME, apellido);
        mapDatos.put(DELEGATION, delegacion);
 
-       FirebaseDatabase.getInstance().getReference().child(USERS).updateChildren(mapDatos);
+       FirebaseDatabase.getInstance().getReference().child(USERS).child(FirebaseAuth.getInstance()
+               .getCurrentUser().getProviderId()).updateChildren(mapDatos);
 
 
 

@@ -54,7 +54,7 @@ public class PagerFragment extends Fragment {
         if (args.equals(SAR)) {
            if(code.equals(NEW)){
                 adapter.addFragment(new Sar1Fragment(OLD, args, sarData, stateAdmin));
-                adapter.addFragment(new Sar2Fragment(args, stateAdmin));
+                adapter.addFragment(new Sar2Fragment(args, sarData, stateAdmin));
             }
             if (code.equals("")){
                 adapter.addFragment(new Sar1Fragment("", args, stateAdmin));

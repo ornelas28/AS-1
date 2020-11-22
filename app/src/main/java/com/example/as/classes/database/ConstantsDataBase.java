@@ -21,6 +21,18 @@ public class ConstantsDataBase {
     public static final String LONGITUDE = "longitude";
     public static final String SARS = "SARs";
     public static final String STATE = "state";
+    public static final String FINISH_HOUR = "finishHour";
+    public static final String FRAP_NUMBER = "frapNumber";
+    public static final String SERVICE_PERSONAL = "servicePersonal";
+    public static final String SERVICE_UNITS = "serviceUnits";
+    public static final String ACTS_DESCRIPTIONS = "actsDescriptions";
+    public static final String NUMBER_PATIENTS = "numberPatients";
+    public static final String TYPE_PATIENTS = "typePatients";
+    public static final String PATIENT_TRANSFER = "patientTransfer";
+    public static final String HOSPITAL_TRANSFER = "hospitalTransfer";
+    public static final String PUBLIC_AUTHORITIES = "publicAuthorities";
+    public static final String CRM_AUTHORITIES = "crmAuthorities";
+    public static final String OBSERVATIONS = "observations";
 
     public static final String CODE = "code";
     public static final String NEW = "0";
