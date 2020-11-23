@@ -20,6 +20,7 @@ public class ConstantsDataBase {
     public static final String LATITUDE = "latitude";
     public static final String LONGITUDE = "longitude";
     public static final String SARS = "SARs";
+    public static final String RISS = "RISs";
     public static final String STATE = "state";
     public static final String FINISH_HOUR = "finishHour";
     public static final String FRAP_NUMBER = "frapNumber";
@@ -39,4 +40,51 @@ public class ConstantsDataBase {
     public static final String OLD = "1";
     public static final String SAR = "2";
     public static final String RIS = "3";
+
+    private String date;
+    private String entity;
+    private String delegation;
+
+    private int implicate;
+
+    public static final String TRAFFIC_ACCIDENT = "trafficAccedent";
+    public static final String ASSAULT = "assault";
+    public static final String VIOLENCE = "violence";
+    public static final String SHOOTING = "shooting";
+    public static final String KIDNAPPING = "kidnapping";
+    public static final String EMBLEM_ABUSE = "emblem_abuse";
+    public static final String ARRESTS = "arrests";
+    public static final String HOUR = "hour";
+    public static final String PERSONAL_ASSAULT = "personalAssault";
+    public static final String EXTORTION = "extortion";
+    public static final String THREAT = "threat";
+    public static final String PREVENT_ACCESS = "preventAccess";
+    public static final String ASSAULT_ON_FACILITIES = "assaultOnFacilities";
+    public static final String ASSAULT_ON_STAFF = "assaultOnStaff";
+    public static final String AGGRESSION_TO_TRANSPORTED = "aggressionToTransported";
+    public static final String ENTITY = "entity";
+    public static final String IMPLICATE = "implicate";
+
+    // RIS2
+
+    public static final String HECHOS = "hechos";
+    public static final String CAUSA = "causa";
+    public static final String STATE_SALUD = "stateSalud";
+    public static final String DETAILS = "details";
+    public static final String DANOS = "danos";
+    public static final String SALUD = "salud";
+    public static final String OBSERVACIONES = "observaciones";
+
+
+    public static final String POLICIAFEDERAL = "policiaFederal";
+    public static final String POLICIAESTATAL = "policiaEstatal";
+    public static final String POLICIAMUNICIPAL = "policiaMunicipal";
+    public static final String EJERCITO = "ejercito";
+    public static final String MARINA = "marina";
+    public static final String GUARDIA = "guardia";
+    public static final String ACTORES = "actores";
+    public static final String MANIFESTANTE = "manifestante";
+    public static final String DELINCUENCIA = "delincuencia";
+    public static final String OTHERS = "others";
+    public static final String COMUNIDADES = "comunidades";
 }

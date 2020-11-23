@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.as.MyAccountActivity;
 import com.example.as.R;
 import com.example.as.classes.database.ConstantsDataBase;
+import com.example.as.classes.database.RISData;
 import com.example.as.classes.database.SARData;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -63,19 +64,20 @@ public class Sar2Fragment extends Fragment {
     Button btn_Save;
     Button btn_Finish;
 
-    public Sar2Fragment (String code, String args, SARData sarData, Boolean stateAdmin) {
+    public Sar2Fragment (String code, String args, SARData sarData, boolean stateAdmin) {
         this.code = code;
         this.args = args;
-        this.sarData= sarData;
+        this.sarData = sarData;
         this.stateConstructor=true;
-        this.stateAdmin=stateAdmin;
+        this.stateAdmin = stateAdmin;
     }
 
-    public Sar2Fragment (String code, String args, Boolean stateAdmin) {
+    public Sar2Fragment (String code, String args, boolean stateAdmin) {
         this.code = code;
         this.args = args;
-        this.stateAdmin=stateAdmin;
+        this.stateAdmin = stateAdmin;
     }
+
 
 
     @Override
@@ -127,125 +129,109 @@ public class Sar2Fragment extends Fragment {
         AutoridadesPublicas.setAdapter(arrayAutoridadesPub);
         AutoridadesCrm.setAdapter(arrayAutoridadesCRM);
 
-        btn_Save.setOnClickListener(view -> {
+        if (stateConstructor) {
 
-           onUpdate(false);
+            initOld();
+        }
+
+        btn_Save.setOnClickListener(view -> {
+          if (stateConstructor){
+              onUpdate(false);
+          }else{
+              onSave();
+          }
         });
 
-        btn_Finish.setOnClickListener(view -> onFinish());
+        btn_Finish.setOnClickListener(view -> onUpdate(true));
+    }
 
+    private void onSave() {
+        Map<String, Object> mapsar = new HashMap<>();
+
+        String HT = HospitalTraslado.getSelectedItem().toString();
+        String AP = AutoridadesPublicas.getSelectedItem().toString();
+        String AC = AutoridadesCrm.getSelectedItem().toString();
+        String HC = HoraConclusion.getText().toString().trim();
+        String NF = NumeroFrap.getText().toString().trim();
+        String PS = PersonalServicio.getText().toString().trim();
+        String US = UnidadesServicio.getText().toString().trim();
+        String DH = DescripcionHechos.getText().toString().trim();
+        String CP = CantidadPacientes.getText().toString().trim();
+        String TP = TipoPaciente.getText().toString().trim();
+        String TSP = TrasladoPaciente.getText().toString().trim();
+        String OB = Observaciones.getText().toString().trim();
+
+        mapsar.put(HOSPITAL_TRANSFER, HT);
+        mapsar.put(PUBLIC_AUTHORITIES, AP);
+        mapsar.put(CRM_AUTHORITIES, AC);
+        mapsar.put(FINISH_HOUR, HC);
+        mapsar.put(FRAP_NUMBER, NF);
+        mapsar.put(SERVICE_PERSONAL, PS);
+        mapsar.put(SERVICE_UNITS, US);
+        mapsar.put(ACTS_DESCRIPTIONS, DH);
+        mapsar.put(NUMBER_PATIENTS, CP);
+        mapsar.put(TYPE_PATIENTS, TP);
+        mapsar.put(PATIENT_TRANSFER, TSP);
+        mapsar.put(OBSERVATIONS, OB);
+        mapsar.put(STATE, false);
+
+    FirebaseDatabase.getInstance().getReference().child(SARS).push().setValue(mapsar);
+
+    if (stateAdmin){
+        getFragmentManager().beginTransaction().replace(R.id.container_sar, new ListFragment(args)).commit();
+    }else {
+        getFragmentManager().beginTransaction().replace(R.id.container_sar, new ListFragment(args)).commit();
+    }
+    }
+
+    private void initOld(){
+        String HT = HospitalTraslado.getSelectedItem().toString();
+        String AP = AutoridadesPublicas.getSelectedItem().toString();
+        String AC = AutoridadesCrm.getSelectedItem().toString();
+        String HC = HoraConclusion.getText().toString().trim();
+        String NF = NumeroFrap.getText().toString().trim();
+        String PS = PersonalServicio.getText().toString().trim();
+        String US = UnidadesServicio.getText().toString().trim();
+        String DH = DescripcionHechos.getText().toString().trim();
+        String CP = CantidadPacientes.getText().toString().trim();
+        String TP = TipoPaciente.getText().toString().trim();
+        String TSP = TrasladoPaciente.getText().toString().trim();
+        String OB = Observaciones.getText().toString().trim();
 
     }
 
-    private void onUpdate(boolean b) {
-        
-       FirebaseDatabase.getInstance().getReference(SARS).addValueEventListener(new ValueEventListener() {
-           @Override
-           public void onDataChange(@NonNull DataSnapshot snapshot) {
-               for(DataSnapshot keynode: snapshot.getChildren()){
-                   if (keynode.getKey().equals(sarData.getKey())){
-                       
-                       Boolean stateSpinnerHospital = HospitalTraslado.getSelectedItem().toString()
-                               .equalsIgnoreCase("Hospital de traslado");
-                       Boolean stateSpinnerApublic = AutoridadesPublicas.getSelectedItem().toString()
-                               .equalsIgnoreCase("Autoridad publica presente");
-                       Boolean stateSpinnerACRM = AutoridadesCrm.getSelectedItem().toString()
-                               .equalsIgnoreCase("Autoridad CRM informadas");
+    private void onUpdate(Boolean b){
+        Map<String, Object> mapsar = new HashMap<>();
 
-                       if (!stateSpinnerHospital && !stateSpinnerApublic && !stateSpinnerACRM
-                               && !HoraConclusion.getText().toString().isEmpty() && !NumeroFrap.getText().toString().isEmpty()
-                               && !PersonalServicio.getText().toString().isEmpty() && !UnidadesServicio.getText().toString().isEmpty()
-                               && !DescripcionHechos.getText().toString().isEmpty() && !CantidadPacientes.getText().toString().isEmpty()
-                               && !TipoPaciente.getText().toString().isEmpty() && !TrasladoPaciente.getText().toString().isEmpty()
-                           /*&& !Observaciones.getText().toString().isEmpty()*/) {
-                           
-                           Map<String, Object> mapsar = new HashMap<>();
-                           String HT = HospitalTraslado.getSelectedItem().toString();
-                           String AP = AutoridadesPublicas.getSelectedItem().toString();
-                           String AC = AutoridadesCrm.getSelectedItem().toString();
-                           String HC = HoraConclusion.getText().toString().trim();
-                           String NF = NumeroFrap.getText().toString().trim();
-                           String PS = PersonalServicio.getText().toString().trim();
-                           String US = UnidadesServicio.getText().toString().trim();
-                           String DH = DescripcionHechos.getText().toString().trim();
-                           String CP = CantidadPacientes.getText().toString().trim();
-                           String TP = TipoPaciente.getText().toString().trim();
-                           String TSP = TrasladoPaciente.getText().toString().trim();
-                           String OB = Observaciones.getText().toString().trim();
+        String HT = HospitalTraslado.getSelectedItem().toString();
+        String AP = AutoridadesPublicas.getSelectedItem().toString();
+        String AC = AutoridadesCrm.getSelectedItem().toString();
+        String HC = HoraConclusion.getText().toString().trim();
+        String NF = NumeroFrap.getText().toString().trim();
+        String PS = PersonalServicio.getText().toString().trim();
+        String US = UnidadesServicio.getText().toString().trim();
+        String DH = DescripcionHechos.getText().toString().trim();
+        String CP = CantidadPacientes.getText().toString().trim();
+        String TP = TipoPaciente.getText().toString().trim();
+        String TSP = TrasladoPaciente.getText().toString().trim();
+        String OB = Observaciones.getText().toString().trim();
 
-                           mapsar.put(HOSPITAL_TRANSFER, HT);
-                           mapsar.put(PUBLIC_AUTHORITIES, AP);
-                           mapsar.put(CRM_AUTHORITIES, AC);
-                           mapsar.put(FINISH_HOUR, HC);
-                           mapsar.put(FRAP_NUMBER, NF);
-                           mapsar.put(SERVICE_PERSONAL, PS);
-                           mapsar.put(SERVICE_UNITS, US);
-                           mapsar.put(ACTS_DESCRIPTIONS, DH);
-                           mapsar.put(NUMBER_PATIENTS, CP);
-                           mapsar.put(TYPE_PATIENTS, TP);
-                           mapsar.put(PATIENT_TRANSFER, TSP);
-                           mapsar.put(OBSERVATIONS, OB);
-                           mapsar.put(STATE, b);
+        mapsar.put(HOSPITAL_TRANSFER, HT);
+        mapsar.put(PUBLIC_AUTHORITIES, AP);
+        mapsar.put(CRM_AUTHORITIES, AC);
+        mapsar.put(FINISH_HOUR, HC);
+        mapsar.put(FRAP_NUMBER, NF);
+        mapsar.put(SERVICE_PERSONAL, PS);
+        mapsar.put(SERVICE_UNITS, US);
+        mapsar.put(ACTS_DESCRIPTIONS, DH);
+        mapsar.put(NUMBER_PATIENTS, CP);
+        mapsar.put(TYPE_PATIENTS, TP);
+        mapsar.put(PATIENT_TRANSFER, TSP);
+        mapsar.put(OBSERVATIONS, OB);
+        mapsar.put(STATE, false);
 
-                           FirebaseDatabase.getInstance().getReference().child(SARS).child(sarData.getKey()).updateChildren(mapsar);
+        FirebaseDatabase.getInstance().getReference().child(SARS).child(sarData.getKey()).updateChildren(mapsar);
 
-
-                       }
-                   }
-               }
-           }
-
-           @Override
-           public void onCancelled(@NonNull DatabaseError error) {
-
-           }
-       });
-    }
-
-    private void onFinish() {
-        Boolean stateSpinnerHospital = HospitalTraslado.getSelectedItem().toString()
-                .equalsIgnoreCase("Hospital de traslado");
-        Boolean stateSpinnerApublic = AutoridadesPublicas.getSelectedItem().toString()
-                .equalsIgnoreCase("Autoridad publica presente");
-        Boolean stateSpinnerACRM = AutoridadesCrm.getSelectedItem().toString()
-                .equalsIgnoreCase("Autoridad CRM informadas");
-
-        if (!stateSpinnerHospital && !stateSpinnerApublic && !stateSpinnerACRM
-                && !HoraConclusion.getText().toString().isEmpty() && !NumeroFrap.getText().toString().isEmpty()
-                && !PersonalServicio.getText().toString().isEmpty() && !UnidadesServicio.getText().toString().isEmpty()
-                && !DescripcionHechos.getText().toString().isEmpty() && !CantidadPacientes.getText().toString().isEmpty()
-                && !TipoPaciente.getText().toString().isEmpty() && !TrasladoPaciente.getText().toString().isEmpty()
-                && !Observaciones.getText().toString().isEmpty()) {
-            Map<String, Object> mapsar = new HashMap<>();
-            String HT = HospitalTraslado.getSelectedItem().toString();
-            String AP = AutoridadesPublicas.getSelectedItem().toString();
-            String AC = AutoridadesCrm.getSelectedItem().toString();
-            String HC = HoraConclusion.getText().toString().trim();
-            String NF = NumeroFrap.getText().toString().trim();
-            String PS = PersonalServicio.getText().toString().trim();
-            String US = UnidadesServicio.getText().toString().trim();
-            String DH = DescripcionHechos.getText().toString().trim();
-            String CP = CantidadPacientes.getText().toString().trim();
-            String TP = TipoPaciente.getText().toString().trim();
-            String TSP = TrasladoPaciente.getText().toString().trim();
-            String OB = Observaciones.getText().toString().trim();
-
-            mapsar.put(HOSPITAL_TRANSFER, HT);
-            mapsar.put(PUBLIC_AUTHORITIES, AP);
-            mapsar.put(CRM_AUTHORITIES, AC);
-            mapsar.put(FINISH_HOUR, HC);
-            mapsar.put(FRAP_NUMBER, NF);
-            mapsar.put(SERVICE_PERSONAL, PS);
-            mapsar.put(SERVICE_UNITS, US);
-            mapsar.put(ACTS_DESCRIPTIONS, DH);
-            mapsar.put(NUMBER_PATIENTS, CP);
-            mapsar.put(TYPE_PATIENTS, TP);
-            mapsar.put(PATIENT_TRANSFER, TSP);
-            mapsar.put(OBSERVATIONS, OB);
-            mapsar.put(STATE, true);
-
-            FirebaseDatabase.getInstance().getReference().child(SARS).child(sarData.getKey()).updateChildren(mapsar);
-        }
 
     }
 }

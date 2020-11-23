@@ -94,44 +94,10 @@ public class UserMainActivity_C extends AppCompatActivity implements View.OnClic
                 break;
             }
             case R.id.crd_ris: {
-                final Button buttonSend;
-                final Spinner spinnerNumber;
-                AlertDialog.Builder builder;
-                View view1;
-                EditText textDate;
-                Calendar calendar;
-                String currentDate;
-                AlertDialog dialog;
-
-                builder = new AlertDialog.Builder(UserMainActivity_C.this);
-                builder.setTitle("Reporte de Incidente de Seguridad(RIS)");
-                builder.setIcon(R.drawable.salvar);
-                builder.setMessage("\nIngresa los datos correspondientes");
-
-                view1 = getLayoutInflater().inflate(R.layout.activity_envio_ris, null);
-                spinnerNumber = view1.findViewById(R.id.Numero_delgacion_ris_inflate);
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(UserMainActivity_C.this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.num_y_del));
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinnerNumber.setAdapter(adapter);
-
-                textDate = view1.findViewById(R.id.txt_fecha_ris_inflate);
-                calendar = Calendar.getInstance();
-                currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
-                textDate.setText(currentDate);
-
-                buttonSend = view1.findViewById(R.id.btn_enviar);
-                buttonSend.setOnClickListener(view12 -> {
-                    if (!spinnerNumber.getSelectedItem()
-                            .toString().equalsIgnoreCase("Delegación")) {
-                        startActivity(new Intent(UserMainActivity_C.this, RisActivity.class));
-                    } else {
-                        Toast.makeText(UserMainActivity_C.this, "Eh we el spinner", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-                builder.setView(view1);
-                dialog = builder.create();
-                dialog.show();
+                Intent intentSendActivity;
+                intentSendActivity = new Intent(UserMainActivity_C.this, SendActivity.class);
+                intentSendActivity.putExtra(CODE, RIS);
+                startActivity(intentSendActivity);
                 break;
             }
             default:
